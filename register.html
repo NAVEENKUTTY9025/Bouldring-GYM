@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sign Up | SummitGrip Climbing Gym</title>
+    <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=64&h=64&fit=crop">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A;
+            color: #FFFFFF;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Light Mode */
+        body.light-mode {
+            background-color: #F0F0F0;
+            color: #111111;
+        }
+
+        body.light-mode .register-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        body.light-mode .register-container p {
+            color: #4B5563;
+        }
+        body.light-mode .register-container label {
+            color: #374151;
+        }
+        body.light-mode .register-container input {
+            background: #F5F5F5;
+            color: #111111;
+            border: 1px solid #D1D5DB;
+        }
+        body.light-mode .register-container input:focus {
+            border-color: #F97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+        }
+        body.light-mode .register-container .divider {
+            background: #E5E5E5;
+        }
+        body.light-mode .register-container .divider span {
+            background: #FFFFFF;
+        }
+        body.light-mode .register-container .social-btn {
+            background: #F5F5F5;
+            color: #111111;
+            border: 1px solid #D1D5DB;
+        }
+        body.light-mode .register-container .social-btn:hover {
+            background: #E5E5E5;
+            border-color: #F97316;
+        }
+        body.light-mode .register-container .login-link {
+            color: #4B5563;
+        }
+        body.light-mode .register-container .login-link a:hover {
+            color: #F97316;
+        }
+        body.light-mode .register-container .login-link a {
+            color: #F97316;
+        }
+        body.light-mode .top-bar .logo-text {
+            color: #111111;
+        }
+        body.light-mode .top-bar .control-btn {
+            color: #111111;
+            background: rgba(0,0,0,0.06);
+            border-color: rgba(0,0,0,0.1);
+        }
+        body.light-mode .top-bar .control-btn:hover {
+            background: rgba(249, 115, 22, 0.2);
+            border-color: #F97316;
+        }
+
+        /* Color Variables */
+        :root {
+            --accent: #F97316;
+            --accent-hover: #ea580c;
+            --gray-muted: #9CA3AF;
+        }
+
+        .text-accent { color: var(--accent) !important; }
+
+        /* ===== TOP BAR - FIXED POSITIONING ===== */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            background: transparent;
+            z-index: 100;
+            pointer-events: none;
+        }
+        .top-bar > * {
+            pointer-events: auto;
+        }
+
+        .logo-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            color: var(--accent);
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: white;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+        .logo-text span:first-child {
+            color: var(--accent);
+        }
+
+        .top-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        .control-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            background: rgba(249, 115, 22, 0.15);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: white;
+            border: 1px solid rgba(249, 115, 22, 0.15);
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+        .control-btn:hover {
+            background: rgba(249, 115, 22, 0.35);
+            border-color: var(--accent);
+        }
+        .control-btn .icon {
+            font-size: 14px;
+        }
+        .control-btn .label {
+            font-size: 11px;
+        }
+
+        /* ===== REGISTER CONTAINER ===== */
+        .register-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 0;
+        }
+
+        .register-container {
+            background: rgba(26, 26, 26, 0.92);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 36px 32px;
+            width: 100%;
+            max-width: 420px;
+            border: 1px solid rgba(249, 115, 22, 0.15);
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            margin: 0 16px;
+            max-height: 92vh;
+            overflow-y: auto;
+        }
+        .register-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .register-container .register-icon {
+            font-size: 44px;
+            text-align: center;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .register-container h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+        .register-container p {
+            text-align: center;
+            color: var(--gray-muted);
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+            color: #D1D5DB;
+            transition: color 0.3s ease;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid #2A2A2A;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        body.light-mode .form-group input {
+            background: #F5F5F5;
+            color: #111111;
+            border: 1px solid #D1D5DB;
+        }
+        .form-group input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+        }
+        .form-group input::placeholder {
+            color: #6B7280;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background-color: var(--accent);
+            color: white;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            margin-top: 4px;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 18px 0;
+            color: var(--gray-muted);
+            font-size: 0.7rem;
+            background: #2A2A2A;
+            height: 1px;
+            transition: background 0.3s ease;
+        }
+        body.light-mode .divider {
+            background: #E5E5E5;
+        }
+        .divider span {
+            background: #1A1A1A;
+            padding: 0 12px;
+            transition: background 0.3s ease;
+        }
+        body.light-mode .divider span {
+            background: #FFFFFF;
+        }
+
+        .social-login {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 6px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        body.light-mode .social-btn {
+            background: #F5F5F5;
+            color: #111111;
+            border: 1px solid #D1D5DB;
+        }
+        .social-btn:hover {
+            background: rgba(249, 115, 22, 0.15);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        body.light-mode .social-btn:hover {
+            background: #E5E5E5;
+            border-color: #F97316;
+        }
+        .social-btn .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .social-btn .social-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+        .social-btn .social-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: var(--gray-muted);
+            transition: color 0.3s ease;
+        }
+        .login-link a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        .login-link a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .terms-text {
+            font-size: 0.7rem;
+            color: var(--gray-muted);
+            text-align: center;
+            margin-top: 14px;
+            line-height: 1.5;
+        }
+        .terms-text a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .terms-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .top-bar {
+                padding: 0 16px;
+                height: 64px;
+            }
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            .logo-icon {
+                width: 28px;
+                height: 28px;
+            }
+            .control-btn {
+                padding: 5px 10px;
+                font-size: 11px;
+            }
+            .control-btn .label {
+                font-size: 10px;
+            }
+            .register-container {
+                padding: 28px 24px;
+                max-width: 94%;
+                border-radius: 20px;
+                margin: 0 12px;
+            }
+            .register-container h2 {
+                font-size: 1.3rem;
+            }
+            .register-container .register-icon {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-bar {
+                padding: 0 12px;
+                height: 56px;
+            }
+            .logo-text {
+                font-size: 1rem;
+            }
+            .logo-icon {
+                width: 24px;
+                height: 24px;
+            }
+            .control-btn {
+                padding: 4px 8px;
+                font-size: 10px;
+                border-radius: 6px;
+            }
+            .control-btn .icon {
+                font-size: 12px;
+            }
+            .control-btn .label {
+                font-size: 9px;
+            }
+            .register-container {
+                padding: 20px 16px;
+                max-width: 96%;
+                border-radius: 16px;
+                margin: 0 8px;
+                max-height: 90vh;
+            }
+            .register-container h2 {
+                font-size: 1.1rem;
+            }
+            .register-container p {
+                font-size: 0.75rem;
+                margin-bottom: 16px;
+            }
+            .register-container .register-icon {
+                font-size: 32px;
+            }
+            .form-group {
+                margin-bottom: 10px;
+            }
+            .form-group input {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .btn-primary {
+                padding: 10px 16px;
+                font-size: 0.8rem;
+            }
+            .social-login {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .social-btn {
+                padding: 10px;
+                font-size: 0.85rem;
+            }
+            .social-btn .social-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+            .social-btn .social-label {
+                font-size: 0.85rem;
+            }
+            .divider {
+                margin: 14px 0;
+                font-size: 0.65rem;
+            }
+            .login-link {
+                font-size: 0.75rem;
+                margin-top: 14px;
+            }
+            .terms-text {
+                font-size: 0.6rem;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .top-bar {
+                padding: 0 8px;
+                height: 50px;
+            }
+            .logo-text {
+                font-size: 0.85rem;
+            }
+            .logo-icon {
+                width: 20px;
+                height: 20px;
+            }
+            .control-btn {
+                padding: 3px 6px;
+                font-size: 9px;
+            }
+            .control-btn .icon {
+                font-size: 10px;
+            }
+            .control-btn .label {
+                font-size: 8px;
+            }
+            .register-container {
+                padding: 16px 12px;
+                border-radius: 14px;
+                max-height: 88vh;
+            }
+            .register-container h2 {
+                font-size: 0.95rem;
+            }
+            .register-container .register-icon {
+                font-size: 28px;
+            }
+            .form-group input {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+            .btn-primary {
+                padding: 8px 14px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* RTL Support */
+        [dir="rtl"] .top-bar {
+            flex-direction: row-reverse;
+        }
+        [dir="rtl"] .top-controls {
+            flex-direction: row-reverse;
+        }
+        [dir="rtl"] .social-login {
+            direction: ltr;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR - Logo left, controls right -->
+    <div class="top-bar">
+        <a href="index.html" class="logo-brand">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            <span class="logo-text"><span>Summit</span>Grip</span>
+        </a>
+
+        <div class="top-controls">
+            <button onclick="toggleDirection()" class="control-btn">
+                <span class="icon">🌐</span>
+                <span class="label" id="dirText">LTR</span>
+            </button>
+            <button onclick="toggleTheme()" class="control-btn">
+                <span class="icon" id="themeIcon">🌙</span>
+                <span class="label" id="themeText">Dark</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- REGISTER CONTAINER - Fixed, minimal scroll -->
+    <div class="register-wrapper">
+        <div class="register-container">
+            <span class="register-icon">🧗</span>
+            <h2>Create Account</h2>
+            <p>Start your climbing journey today</p>
+
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" placeholder="Alex" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" placeholder="Honnold" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="alex@climb.com" required autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="•••••••• (min 8 characters)" required minlength="8" autocomplete="new-password">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="••••••••" required autocomplete="new-password">
+                </div>
+
+                <button type="submit" class="btn-primary" id="registerBtn">
+                    <span>🚀</span> Create Account
+                </button>
+            </form>
+
+            <div class="divider"><span>or sign up with</span></div>
+
+            <div class="social-login">
+                <button class="social-btn" onclick="socialRegister('Google')">
+                    <span class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                        </svg>
+                    </span>
+                    <span class="social-label">Google</span>
+                </button>
+                <button class="social-btn" onclick="socialRegister('Facebook')">
+                    <span class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </span>
+                    <span class="social-label">Facebook</span>
+                </button>
+                <button class="social-btn" onclick="socialRegister('Apple')">
+                    <span class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                    </span>
+                    <span class="social-label">Apple</span>
+                </button>
+            </div>
+
+            <div class="login-link">
+                Already have an account? <a href="login.html">Sign in</a>
+            </div>
+
+            <div class="terms-text">
+                By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ----- DIRECTION (RTL/LTR) -----
+        function toggleDirection() {
+            const html = document.documentElement;
+            const newDir = html.dir === 'rtl' ? 'ltr' : 'rtl';
+            html.dir = newDir;
+            const dirText = document.getElementById('dirText');
+            if(dirText) dirText.innerText = newDir.toUpperCase();
+        }
+
+        // ----- THEME (Dark/Light) -----
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+            const isLight = body.classList.contains('light-mode');
+            const themeText = document.getElementById('themeText');
+            const themeIcon = document.getElementById('themeIcon');
+            if(themeText) {
+                themeText.innerText = isLight ? 'Light' : 'Dark';
+            }
+            if(themeIcon) {
+                themeIcon.innerText = isLight ? '☀️' : '🌙';
+            }
+            localStorage.setItem('summitTheme', isLight ? 'light' : 'dark');
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('summitTheme');
+        if(savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            const themeText = document.getElementById('themeText');
+            const themeIcon = document.getElementById('themeIcon');
+            if(themeText) themeText.innerText = 'Light';
+            if(themeIcon) themeIcon.innerText = '☀️';
+        }
+
+        // ----- REGISTER HANDLER -----
+        function handleRegister(e) {
+            e.preventDefault();
+            const btn = document.getElementById('registerBtn');
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (!firstName || !lastName || !email || !password || !confirmPassword) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters long.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '⏳ Creating account...';
+
+            // Simulate registration
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = '🚀 Create Account';
+                alert('✅ Account created successfully! Welcome to SummitGrip!');
+                // In production, redirect: window.location.href = 'login.html';
+            }, 1500);
+        }
+
+        // ----- SOCIAL REGISTER -----
+        function socialRegister(provider) {
+            alert(`🔐 ${provider} sign up would open here.\nThis is a demo — no actual authentication.`);
+        }
+
+        // ----- Prevent scroll -----
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        document.addEventListener('wheel', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'PageUp' || e.key === 'PageDown' || e.key === 'Home' || e.key === 'End') {
+                e.preventDefault();
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>FAQ | SummitGrip Climbing Gym | Questions & Answers</title>
+    <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=64&h=64&fit=crop">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A;
+            color: #FFFFFF;
+            line-height: 1.5;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Light Mode */
+        body.light-mode {
+            background-color: #F5F5F5;
+            color: #111111;
+        }
+
+        body.light-mode .card-white {
+            background: #FFFFFF;
+            color: #0A0A0A;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        body.light-mode .faq-card {
+            background: #FFFFFF;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            color: #111111;
+        }
+        body.light-mode .faq-card p {
+            color: #4B5563;
+        }
+        body.light-mode .section-dark {
+            background-color: #F0F0F0;
+        }
+        body.light-mode .section-alt {
+            background-color: #E8E8E8;
+        }
+        body.light-mode footer {
+            background: #FFFFFF;
+            border-top: 1px solid #E5E5E5;
+        }
+        body.light-mode .footer-col a {
+            color: #6B7280;
+        }
+        body.light-mode .footer-col p,
+        body.light-mode .footer-bottom {
+            color: #4B5563 !important;
+        }
+        body.light-mode .nav-container {
+            background: rgba(245, 245, 245, 0.95);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+        body.light-mode .nav-link,
+        body.light-mode .desktop-control-btn,
+        body.light-mode .mobile-nav-link,
+        body.light-mode .control-btn-mobile {
+            color: #111111 !important;
+        }
+        body.light-mode .dropdown-content {
+            background-color: #FFFFFF;
+            border: 1px solid #F97316;
+        }
+        body.light-mode .dropdown-content a {
+            color: #111111;
+        }
+        body.light-mode .section-title p {
+            color: #4B5563 !important;
+        }
+        body.light-mode .faq-category-title {
+            color: #111111;
+        }
+        body.light-mode .hero-overlay {
+            background: linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 100%);
+        }
+        body.light-mode .hero-badge {
+            background: rgba(249, 115, 22, 0.9);
+            color: white;
+        }
+        body.light-mode .faq-hero h1 {
+            color: #FFFFFF !important;
+        }
+        body.light-mode .faq-hero p {
+            color: rgba(255,255,255,0.95) !important;
+        }
+        body.light-mode .stat-box {
+            background: #FFFFFF;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        body.light-mode .cta-box {
+            background: #FFFFFF;
+        }
+        body.light-mode .quick-link-box {
+            background: rgba(0,0,0,0.04);
+        }
+
+        /* Color Variables */
+        :root {
+            --accent: #F97316;
+            --accent-hover: #ea580c;
+            --gray-muted: #9CA3AF;
+        }
+
+        .text-accent { color: var(--accent) !important; }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: white;
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--accent);
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-outline:hover { background: var(--accent); color: white; transform: translateY(-2px); }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 24px;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 8px 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            transition: background 0.3s ease;
+        }
+        .logo-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .logo-icon { width: 32px; height: 32px; color: var(--accent); }
+        .logo-text { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.02em; color: white; }
+        body.light-mode .logo-text { color: #111111; }
+        .logo-text span:first-child { color: var(--accent); }
+
+        .desktop-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-link {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: white !important;
+            text-decoration: none;
+            white-space: nowrap;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .nav-link:hover, .nav-link.active-page {
+            background-color: var(--accent) !important;
+            color: white !important;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #1A1A1A;
+            min-width: 160px;
+            border-radius: 12px;
+            border: 1px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 100;
+            overflow: hidden;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+        .dropdown-content a:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        .dropdown-content.show { display: block; }
+
+        .desktop-controls-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .desktop-control-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            background: rgba(249, 115, 22, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: white;
+            border: none;
+        }
+        .desktop-control-btn:hover { background: rgba(249, 115, 22, 0.5); }
+
+        .mobile-menu-btn {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(249, 115, 22, 0.2);
+            cursor: pointer;
+            border: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav-links { display: flex !important; }
+            .desktop-controls-wrapper { display: flex !important; }
+            .mobile-menu-btn { display: none !important; }
+        }
+        @media (max-width: 1023px) {
+            .desktop-nav-links { display: none !important; }
+            .desktop-controls-wrapper { display: none !important; }
+            .mobile-menu-btn { display: flex !important; }
+        }
+
+        /* Mobile Menu Panel */
+        #mobileMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 85%;
+            max-width: 380px;
+            height: 100vh;
+            background-color: #0A0A0A;
+            z-index: 1100;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            overflow-y: auto;
+            padding: 1.5rem;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.5);
+            border-right: 2px solid var(--accent);
+        }
+        body.light-mode #mobileMenu {
+            background-color: #FFFFFF;
+        }
+        #mobileMenu.open { transform: translateX(0); }
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+        .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+        body.menu-open { overflow: hidden; }
+
+        .mobile-nav-link {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: white !important;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+        }
+        body.light-mode .mobile-nav-link { color: #111111 !important; }
+        .mobile-nav-link.active-mobile, .mobile-nav-link:hover {
+            background-color: var(--accent) !important;
+            color: white !important;
+        }
+        .mobile-submenu {
+            display: none;
+            flex-direction: column;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent);
+            margin-bottom: 8px;
+        }
+        .mobile-submenu.open { display: flex; }
+        .mobile-submenu a {
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: white !important;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        body.light-mode .mobile-submenu a { color: #111111 !important; }
+        .mobile-submenu a:hover { background-color: var(--accent); color: white !important; }
+        .control-btn-mobile {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        body.light-mode .control-btn-mobile { color: #111111; }
+
+        /* ===== FAQ HERO ===== */
+        .faq-hero {
+            position: relative;
+            min-height: 55vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.6) 100%);
+            z-index: 1;
+        }
+        .faq-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(249, 115, 22, 0.3);
+            backdrop-filter: blur(4px);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            color: white;
+        }
+        .faq-hero-content h1 {
+            color: white;
+            font-size: clamp(2.2rem, 6vw, 4rem);
+        }
+        .faq-hero-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+        .faq-search-box {
+            margin-top: 32px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            background: rgba(255,255,255,0.1);
+            border-radius: 60px;
+            overflow: hidden;
+            border: 1px solid rgba(249,115,22,0.4);
+            backdrop-filter: blur(8px);
+        }
+        .faq-search-box input {
+            flex: 1;
+            padding: 16px 24px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+        .faq-search-box input::placeholder { color: rgba(255,255,255,0.6); }
+        .faq-search-box button {
+            padding: 16px 28px;
+            background: var(--accent);
+            border: none;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .faq-search-box button:hover { background: var(--accent-hover); }
+        body.light-mode .faq-search-box { background: rgba(0,0,0,0.06); border-color: var(--accent); }
+        body.light-mode .faq-search-box input { color: #111111; }
+        body.light-mode .faq-search-box input::placeholder { color: #6B7280; }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 80px 0; }
+        .section-dark { background-color: #0A0A0A; }
+        .section-alt { background-color: #0F0F0F; }
+        .section-gradient { background: linear-gradient(120deg, #F97310 0%, #0A0A0A 80%); }
+        body.light-mode .section-gradient { background: linear-gradient(120deg, #F97310 0%, #E0E0E0 80%); }
+        .section-title { text-align: center; margin-bottom: 56px; }
+        .section-title span { font-size: 48px; display: inline-block; margin-bottom: 16px; }
+        .section-title h2 { color: white; margin-bottom: 8px; }
+        body.light-mode .section-title h2 { color: #111111; }
+        .section-title p { color: var(--gray-muted); }
+
+        /* ===== GRIDS ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: start;
+        }
+        .grid-3 {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        .grid-4 {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        /* ===== FAQ CARDS ===== */
+        .faq-card {
+            background: #1A1A1A;
+            border-radius: 24px;
+            padding: 28px 32px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+            color: white;
+            cursor: pointer;
+        }
+        body.light-mode .faq-card {
+            background: #FFFFFF;
+            color: #111111;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+        .faq-card:hover { transform: translateX(6px); box-shadow: 0 10px 25px -5px rgba(249,115,22,0.2); }
+        .faq-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .faq-card h3 .q-icon {
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+        .faq-card p {
+            color: #D1D5DB;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding-left: 32px;
+        }
+        body.light-mode .faq-card p { color: #4B5563; }
+
+        .faq-category-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        body.light-mode .faq-category-title { color: #111111; }
+        .faq-category-title span { font-size: 2rem; }
+
+        /* ===== STATS ===== */
+        .stat-box {
+            text-align: center;
+            padding: 32px 20px;
+            border-radius: 24px;
+            background: #1A1A1A;
+            border: 1px solid rgba(249,115,22,0.2);
+            transition: 0.3s;
+        }
+        body.light-mode .stat-box { background: #FFFFFF; }
+        .stat-box:hover { transform: translateY(-4px); border-color: var(--accent); }
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+        .stat-label {
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        /* ===== CTA BOX ===== */
+        .cta-box {
+            background: #1A1A1A;
+            border-radius: 32px;
+            padding: 48px 40px;
+            text-align: center;
+            border: 1px solid rgba(249,115,22,0.3);
+        }
+        body.light-mode .cta-box { background: #FFFFFF; }
+        .cta-box h2 { margin-bottom: 12px; }
+        .cta-box p { color: var(--gray-muted); max-width: 600px; margin: 0 auto 24px; }
+
+        .quick-link-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 24px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.05);
+            transition: 0.3s;
+            text-decoration: none;
+            color: white;
+        }
+        body.light-mode .quick-link-box { background: rgba(0,0,0,0.04); color: #111111; }
+        .quick-link-box:hover { background: var(--accent); color: white !important; transform: translateX(4px); }
+        .quick-link-box span { font-size: 1.5rem; }
+
+        /* ===== FOOTER ===== */
+        footer { background: #0A0A0A; border-top: 1px solid #2A2A2A; padding: 64px 0 32px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 48px; margin-bottom: 48px; }
+        .footer-col h4 { color: var(--accent); font-size: 1rem; margin-bottom: 20px; letter-spacing: 0.05em; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a { color: var(--gray-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom { border-top: 1px solid #2A2A2A; padding-top: 32px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 0.75rem; color: var(--gray-muted); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            section { padding: 60px 0; }
+            .faq-hero { min-height: 45vh; padding-top: 80px; }
+            .faq-hero-content p { font-size: 1rem; padding: 0 16px; }
+            .faq-search-box { flex-direction: column; border-radius: 24px; }
+            .faq-search-box input { padding: 14px 20px; }
+            .faq-search-box button { padding: 14px; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 24px; }
+            .faq-card { padding: 20px 24px; }
+            .faq-card p { padding-left: 0; margin-top: 8px; }
+            .section-title { margin-bottom: 40px; }
+            .section-title span { font-size: 36px; }
+            .section-title h2 { font-size: 1.8rem; }
+            .cta-box { padding: 32px 24px; }
+            .stat-number { font-size: 2.2rem; }
+            .footer-grid { gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .quick-link-box { padding: 14px 18px; }
+        }
+        @media (max-width: 480px) {
+            .nav-container { padding: 8px 16px; }
+            .logo-text { font-size: 1.3rem; }
+            .btn-primary, .btn-outline { padding: 10px 20px; font-size: 0.9rem; }
+            .faq-hero { min-height: 40vh; }
+            .faq-card h3 { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobileMenu">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <a href="index.html" class="logo-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span class="logo-text"><span>Summit</span>Grip</span>
+            </a>
+            <button onclick="closeMobileMenu()" style="background:rgba(249,115,22,0.2); border:none; border-radius:12px; padding:8px 12px; cursor:pointer; color:inherit; font-size:18px;">✕</button>
+        </div>
+        
+        <button onclick="toggleMobileSubmenu('mobileHomeSub')" class="mobile-nav-link">
+            <span>Home</span> <span>▼</span>
+        </button>
+        <div id="mobileHomeSub" class="mobile-submenu">
+            <a href="index.html">Home1</a>
+            <a href="home2.html">Home2</a>
+        </div>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="climb.html" class="mobile-nav-link">Climb</a>
+        <a href="training.html" class="mobile-nav-link">Training</a>
+        <a href="event.html" class="mobile-nav-link">Events</a>
+        <a href="faq.html" class="mobile-nav-link active-mobile">FAQ</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+        
+        <div style="height:1px; background:#2A2A2A; margin:16px 0;"></div>
+        
+        <button onclick="toggleMobileSubmenu('mobileAuthSub')" class="control-btn-mobile">
+            <span>Account</span> <span>▼</span>
+        </button>
+        <div id="mobileAuthSub" class="mobile-submenu">
+            <a href="login.html">Login</a>
+            <a href="register.html">Sign Up</a>
+        </div>
+        
+        <div class="control-btn-mobile" onclick="toggleDirectionMobile()">
+            <span>RTL Mode</span>
+            <span id="mobileDirText">LTR</span>
+        </div>
+        <div class="control-btn-mobile" onclick="toggleThemeMobile()">
+            <span>Dark / Light Mode</span>
+            <span>🌓</span>
+        </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span class="logo-text"><span>Summit</span>Grip</span>
+            </a>
+
+            <div class="desktop-nav-links">
+                <div class="dropdown">
+                    <button onclick="toggleDropdown('homeMenu', event)" class="nav-link">Home <span>▼</span></button>
+                    <div id="homeMenu" class="dropdown-content">
+                        <a href="index.html">Home1</a>
+                        <a href="home2.html">Home2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="climb.html" class="nav-link">Climb</a>
+                <a href="training.html" class="nav-link">Training</a>
+                <a href="event.html" class="nav-link">Events</a>
+                <a href="faq.html" class="nav-link active-page">FAQ</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+
+            <div class="desktop-controls-wrapper">
+                <button onclick="toggleDirection()" class="desktop-control-btn">
+                    <span>🌐</span> <span id="dirTextDesktop">LTR</span>
+                </button>
+                <button onclick="toggleTheme()" class="desktop-control-btn">
+                    <span>🌙</span> <span id="themeTextDesktop">Dark</span>
+                </button>
+                <div class="dropdown">
+                    <button onclick="toggleDropdown('userMenuDesktop', event)" class="desktop-control-btn">
+                        <span>👤</span> <span>Account</span> <span>▼</span>
+                    </button>
+                    <div id="userMenuDesktop" class="dropdown-content">
+                        <a href="login.html">LOGIN</a>
+                        <a href="register.html">SIGNUP</a>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: HERO -->
+    <div class="faq-hero">
+        <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1920&h=800&fit=crop" class="hero-bg" alt="Climbing FAQ">
+        <div class="hero-overlay"></div>
+        <div class="container faq-hero-content">
+            <div class="hero-badge">❓ Got Questions?</div>
+            <h1>Everything You Need to <span class="text-accent">Know</span></h1>
+            <p>From memberships to training, we've got answers. Find what you're looking for below.</p>
+            <div class="faq-search-box" onsubmit="return false;">
+                <input type="text" id="faqSearchInput" placeholder="Search FAQs..." onkeyup="filterFAQs()">
+                <button onclick="filterFAQs()">🔍 Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: GENERAL FAQS -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-title"><span>🏔️</span><h2>General Questions</h2><p>Everything you need to get started</p></div>
+            <div class="grid-2" id="faqGeneral">
+                <div class="faq-card" data-keywords="hours open 24/7 staffed">
+                    <h3><span class="q-icon">Q.</span> What are your opening hours?</h3>
+                    <p>We're open 24/7, 365 days a year! Staffed hours are 6am – 11pm, but members with 24/7 access can climb anytime using their key fob.</p>
+                </div>
+                <div class="faq-card" data-keywords="day pass guest visitor cost price">
+                    <h3><span class="q-icon">Q.</span> Do you offer day passes?</h3>
+                    <p>Absolutely! Day passes are $25 and include full access to all climbing areas. Gear rental (shoes + harness) is available for an additional $10.</p>
+                </div>
+                <div class="faq-card" data-keywords="first time beginner intro pack">
+                    <h3><span class="q-icon">Q.</span> I'm a beginner — where do I start?</h3>
+                    <p>We recommend our Intro Pack: $40 for a day pass, gear rental, and a 30-min orientation with a staff member. We'll teach you the ropes (literally!).</p>
+                </div>
+                <div class="faq-card" data-keywords="parking bike rail transit">
+                    <h3><span class="q-icon">Q.</span> Is there parking available?</h3>
+                    <p>Yes! We have a free parking lot with 80+ spots. We also have bike racks and we're just 2 blocks from the light rail station.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: MEMBERSHIP FAQS -->
+    <section class="section-alt">
+        <div class="container">
+            <div class="section-title"><span>💳</span><h2>Membership FAQs</h2><p>Find the perfect plan for you</p></div>
+            <div class="grid-2" id="faqMembership">
+                <div class="faq-card" data-keywords="membership price cost monthly annual">
+                    <h3><span class="q-icon">Q.</span> How much does a membership cost?</h3>
+                    <p>Monthly memberships start at $85/month. Annual memberships are $900 (save $120!). We also offer student and family discounts — ask at the front desk.</p>
+                </div>
+                <div class="faq-card" data-keywords="freeze hold pause vacation">
+                    <h3><span class="q-icon">Q.</span> Can I freeze my membership?</h3>
+                    <p>Yes! You can freeze your membership for up to 3 months per year at no cost. Just give us 7 days notice and you're all set.</p>
+                </div>
+                <div class="faq-card" data-keywords="cancel cancellation refund">
+                    <h3><span class="q-icon">Q.</span> How do I cancel my membership?</h3>
+                    <p>We're sad to see you go! You can cancel anytime with 30 days notice. No hidden fees — just email us at members@summitgrip.com.</p>
+                </div>
+                <div class="faq-card" data-keywords="family discount kids youth">
+                    <h3><span class="q-icon">Q.</span> Do you offer family discounts?</h3>
+                    <p>We sure do! Families of 3+ get 15% off each membership. Kids under 12 climb for half price with a paying adult.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: CLIMBING & TRAINING FAQS -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-title"><span>🧗</span><h2>Climbing & Training</h2><p>Level up your skills</p></div>
+            <div class="grid-2" id="faqClimbing">
+                <div class="faq-card" data-keywords="route setting grades difficulty">
+                    <h3><span class="q-icon">Q.</span> How often do you change routes?</h3>
+                    <p>Our routesetting team resets sections weekly. Bouldering gets refreshed every Monday, roped routes every Thursday. There's always something new!</p>
+                </div>
+                <div class="faq-card" data-keywords="gear rental shoes harness chalk">
+                    <h3><span class="q-icon">Q.</span> Can I rent gear at the gym?</h3>
+                    <p>Yes! We rent climbing shoes, harnesses, and chalk bags. All gear is professionally cleaned and maintained. Rental packages start at $10.</p>
+                </div>
+                <div class="faq-card" data-keywords="coaching private lesson training">
+                    <h3><span class="q-icon">Q.</span> Do you offer coaching or private lessons?</h3>
+                    <p>Absolutely! Our certified coaches offer private 1-on-1 sessions ($65/hr) and group clinics. Check our Training page for upcoming workshops.</p>
+                </div>
+                <div class="faq-card" data-keywords="youth team kids competition">
+                    <h3><span class="q-icon">Q.</span> Is there a youth climbing team?</h3>
+                    <p>Yes! Our SummitGrip Youth Team competes regionally and nationally. Tryouts are held twice a year. Contact our Youth Program Director for details.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: EVENTS & COMMUNITY FAQS -->
+    <section class="section-gradient">
+        <div class="container">
+            <div class="section-title"><span>🎉</span><h2>Events & Community</h2><p>Get involved with the crew</p></div>
+            <div class="grid-2" id="faqEvents">
+                <div class="faq-card" data-keywords="private event birthday party corporate">
+                    <h3><span class="q-icon">Q.</span> Can I book a private event?</h3>
+                    <p>Yes! We host birthday parties, corporate team-building, and private group sessions. Packages start at $350 for up to 10 people. Contact us for a quote.</p>
+                </div>
+                <div class="faq-card" data-keywords="competition comp tournament">
+                    <h3><span class="q-icon">Q.</span> When are your climbing competitions?</h3>
+                    <p>We host 4 major comps per year: Winter Bouldering Classic, Spring Lead Climbing Cup, Summer Speed Series, and Fall Youth Invitational. Check our Events page for dates.</p>
+                </div>
+                <div class="faq-card" data-keywords="community meetup social">
+                    <h3><span class="q-icon">Q.</span> How do I meet other climbers?</h3>
+                    <p>We have weekly community meetups every Wednesday at 7pm — all levels welcome! Also, check our community board or join our Slack channel to find climbing partners.</p>
+                </div>
+                <div class="faq-card" data-keywords="volunteer give back">
+                    <h3><span class="q-icon">Q.</span> Can I volunteer at SummitGrip?</h3>
+                    <p>We love volunteers! Help with comps, youth programs, or community cleanups. Email volunteer@summitgrip.com to get started.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: STATS + CTA -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-title"><span>📊</span><h2>Quick Facts</h2><p>SummitGrip by the numbers</p></div>
+            <div class="grid-4" style="margin-bottom: 60px;">
+                <div class="stat-box"><div class="stat-number">150+</div><div class="stat-label">Routes & Problems</div></div>
+                <div class="stat-box"><div class="stat-number">24/7</div><div class="stat-label">Access for Members</div></div>
+                <div class="stat-box"><div class="stat-number">3,500+</div><div class="stat-label">Active Members</div></div>
+                <div class="stat-box"><div class="stat-number">12+</div><div class="stat-label">Years of Community</div></div>
+            </div>
+
+            <div class="cta-box">
+                <h2>Still Have Questions?</h2>
+                <p>We're here to help! Reach out to our friendly team and we'll get back to you within 24 hours.</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn-primary">📬 Contact Us</a>
+                    <a href="tel:+1303555CLIMB" class="btn-outline">📞 Call Now</a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                <a href="about.html" class="quick-link-box"><span>🏔️</span> About Us</a>
+                <a href="climb.html" class="quick-link-box"><span>🧗</span> Climbing</a>
+                <a href="training.html" class="quick-link-box"><span>💪</span> Training</a>
+                <a href="event.html" class="quick-link-box"><span>🎉</span> Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><a href="#" class="logo-brand" style="margin-bottom:16px; display:inline-flex;"><svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span class="logo-text"><span>Summit</span>Grip</span></a><p style="color:#9CA3AF; font-size:0.85rem; margin-top:12px;">The ultimate indoor climbing & bouldering destination. Send it with us.</p></div>
+                <div class="footer-col"><h4>EXPLORE</h4><ul><li><a href="#">Climbing Routes</a></li><li><a href="#">Bouldering</a></li><li><a href="#">Memberships</a></li><li><a href="#">Gift Cards</a></li></ul></div>
+                <div class="footer-col"><h4>SUPPORT</h4><ul><li><a href="faq.html">FAQs</a></li><li><a href="#">Safety Rules</a></li><li><a href="#">Employment</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+                <div class="footer-col"><h4>VISIT US</h4><ul><li>📍 123 Gravity Way, Denver, CO</li><li>🕒 Open 24/7 • 365 days</li><li>📞 +1 (303) 555-CLIMB</li></ul></div>
+            </div>
+            <div class="footer-bottom"><span>© 2026 SummitGrip — Elevate Your Climb. All Rights Reserved.</span><div><a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Accessibility</a></div></div>
+        </div>
+    </footer>
+
+    <script>
+        // ----- DROPDOWN -----
+        function toggleDropdown(menuId, e) {
+            if(e) e.stopPropagation();
+            document.querySelectorAll('.dropdown-content').forEach(d => {
+                if(d.id !== menuId) d.classList.remove('show');
+            });
+            const menu = document.getElementById(menuId);
+            if(menu) menu.classList.toggle('show');
+        }
+        window.addEventListener('click', () => {
+            document.querySelectorAll('.dropdown-content').forEach(d => d.classList.remove('show'));
+        });
+
+        // ----- MOBILE MENU -----
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.getElementById('mobileMenuOverlay').classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+        function toggleMobileSubmenu(id) {
+            const sub = document.getElementById(id);
+            if(sub) sub.classList.toggle('open');
+        }
+
+        // ----- DIRECTION -----
+        function toggleDirection() {
+            const html = document.documentElement;
+            const newDir = html.dir === 'rtl' ? 'ltr' : 'rtl';
+            html.dir = newDir;
+            const dirTextDesktop = document.getElementById('dirTextDesktop');
+            const mobileDirText = document.getElementById('mobileDirText');
+            if(dirTextDesktop) dirTextDesktop.innerText = newDir.toUpperCase();
+            if(mobileDirText) mobileDirText.innerText = newDir.toUpperCase();
+        }
+        function toggleDirectionMobile() { toggleDirection(); }
+
+        // ----- THEME -----
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+            const isLight = body.classList.contains('light-mode');
+            const themeTextDesktop = document.getElementById('themeTextDesktop');
+            if(themeTextDesktop) {
+                themeTextDesktop.innerText = isLight ? 'Light' : 'Dark';
+            }
+            localStorage.setItem('summitTheme', isLight ? 'light' : 'dark');
+        }
+        function toggleThemeMobile() { toggleTheme(); }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('summitTheme');
+        if(savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            const themeTextDesktop = document.getElementById('themeTextDesktop');
+            if(themeTextDesktop) themeTextDesktop.innerText = 'Light';
+        }
+
+        // ----- FAQ SEARCH / FILTER -----
+        function filterFAQs() {
+            const input = document.getElementById('faqSearchInput');
+            const query = input.value.toLowerCase().trim();
+            const allFaqs = document.querySelectorAll('.faq-card');
+            
+            allFaqs.forEach(card => {
+                const keywords = card.getAttribute('data-keywords') || '';
+                const text = card.textContent.toLowerCase();
+                const match = query === '' || text.includes(query) || keywords.includes(query);
+                card.style.display = match ? 'block' : 'none';
+            });
+        }
+
+        // Also trigger on Enter key
+        document.getElementById('faqSearchInput').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') filterFAQs();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Events | SummitGrip Climbing Gym | Competitions & Community</title>
+    <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=64&h=64&fit=crop">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A;
+            color: #FFFFFF;
+            line-height: 1.5;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Light Mode */
+        body.light-mode {
+            background-color: #F5F5F5;
+            color: #111111;
+        }
+
+        body.light-mode .event-card {
+            background: #FFFFFF;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            color: #111111;
+        }
+        body.light-mode .event-card p {
+            color: #4B5563;
+        }
+        body.light-mode .event-detail {
+            background: #FFFFFF;
+            color: #111111;
+        }
+        body.light-mode .event-detail p {
+            color: #4B5563;
+        }
+        body.light-mode .section-title p {
+            color: #4B5563 !important;
+        }
+        body.light-mode .section-dark {
+            background-color: #F0F0F0;
+        }
+        body.light-mode .section-alt {
+            background-color: #E8E8E8;
+        }
+        body.light-mode footer {
+            background: #FFFFFF;
+            border-top: 1px solid #E5E5E5;
+        }
+        body.light-mode .footer-col a {
+            color: #6B7280;
+        }
+        body.light-mode .footer-col p,
+        body.light-mode .footer-bottom {
+            color: #4B5563 !important;
+        }
+        body.light-mode .nav-container {
+            background: rgba(245, 245, 245, 0.95);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+        body.light-mode .nav-link,
+        body.light-mode .desktop-control-btn,
+        body.light-mode .mobile-nav-link,
+        body.light-mode .control-btn-mobile {
+            color: #111111 !important;
+        }
+        body.light-mode .dropdown-content {
+            background-color: #FFFFFF;
+            border: 1px solid #F97316;
+        }
+        body.light-mode .dropdown-content a {
+            color: #111111;
+        }
+        body.light-mode .hero-overlay {
+            background: linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 100%);
+        }
+        body.light-mode .hero-badge {
+            background: rgba(249, 115, 22, 0.9);
+            color: white;
+        }
+        body.light-mode .events-hero h1 {
+            color: #FFFFFF !important;
+        }
+        body.light-mode .events-hero p {
+            color: rgba(255,255,255,0.95) !important;
+        }
+        body.light-mode .stat-box {
+            background: #FFFFFF;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        body.light-mode .past-event-card {
+            background: rgba(0,0,0,0.04);
+            color: #111111;
+        }
+        body.light-mode .past-event-card p {
+            color: #4B5563;
+        }
+        body.light-mode .community-card {
+            background: #FFFFFF;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            color: #111111;
+        }
+        body.light-mode .community-card p {
+            color: #4B5563;
+        }
+        body.light-mode .cta-box {
+            background: #FFFFFF;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        body.light-mode .detail-overlay {
+            background: rgba(0,0,0,0.7);
+        }
+        body.light-mode .event-detail .close-detail {
+            color: #111111;
+        }
+        body.light-mode .event-detail .close-detail:hover {
+            background: #F5F5F5;
+        }
+        body.light-mode .event-detail .detail-meta {
+            color: #4B5563;
+        }
+        body.light-mode .event-detail .detail-meta strong {
+            color: #111111;
+        }
+
+        /* Color Variables */
+        :root {
+            --accent: #F97316;
+            --accent-hover: #ea580c;
+            --gray-muted: #9CA3AF;
+        }
+
+        .text-accent { color: var(--accent) !important; }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: white;
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--accent);
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-outline:hover { background: var(--accent); color: white; transform: translateY(-2px); }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 24px;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 8px 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            transition: background 0.3s ease;
+        }
+        .logo-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .logo-icon { width: 32px; height: 32px; color: var(--accent); }
+        .logo-text { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.02em; color: white; }
+        body.light-mode .logo-text { color: #111111; }
+        .logo-text span:first-child { color: var(--accent); }
+
+        .desktop-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-link {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: white !important;
+            text-decoration: none;
+            white-space: nowrap;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .nav-link:hover, .nav-link.active-page {
+            background-color: var(--accent) !important;
+            color: white !important;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #1A1A1A;
+            min-width: 160px;
+            border-radius: 12px;
+            border: 1px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 100;
+            overflow: hidden;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+        .dropdown-content a:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        .dropdown-content.show { display: block; }
+
+        .desktop-controls-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .desktop-control-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            background: rgba(249, 115, 22, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: white;
+            border: none;
+        }
+        .desktop-control-btn:hover { background: rgba(249, 115, 22, 0.5); }
+
+        .mobile-menu-btn {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(249, 115, 22, 0.2);
+            cursor: pointer;
+            border: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav-links { display: flex !important; }
+            .desktop-controls-wrapper { display: flex !important; }
+            .mobile-menu-btn { display: none !important; }
+        }
+        @media (max-width: 1023px) {
+            .desktop-nav-links { display: none !important; }
+            .desktop-controls-wrapper { display: none !important; }
+            .mobile-menu-btn { display: flex !important; }
+        }
+
+        /* Mobile Menu Panel */
+        #mobileMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 85%;
+            max-width: 380px;
+            height: 100vh;
+            background-color: #0A0A0A;
+            z-index: 1100;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            overflow-y: auto;
+            padding: 1.5rem;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.5);
+            border-right: 2px solid var(--accent);
+        }
+        body.light-mode #mobileMenu {
+            background-color: #FFFFFF;
+        }
+        #mobileMenu.open { transform: translateX(0); }
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+        .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+        body.menu-open { overflow: hidden; }
+
+        .mobile-nav-link {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: white !important;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+        }
+        body.light-mode .mobile-nav-link { color: #111111 !important; }
+        .mobile-nav-link.active-mobile, .mobile-nav-link:hover {
+            background-color: var(--accent) !important;
+            color: white !important;
+        }
+        .mobile-submenu {
+            display: none;
+            flex-direction: column;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent);
+            margin-bottom: 8px;
+        }
+        .mobile-submenu.open { display: flex; }
+        .mobile-submenu a {
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: white !important;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        body.light-mode .mobile-submenu a { color: #111111 !important; }
+        .mobile-submenu a:hover { background-color: var(--accent); color: white !important; }
+        .control-btn-mobile {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        body.light-mode .control-btn-mobile { color: #111111; }
+
+        /* ===== EVENTS HERO ===== */
+        .events-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.5) 100%);
+            z-index: 1;
+        }
+        .events-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(249, 115, 22, 0.3);
+            backdrop-filter: blur(4px);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            color: white;
+        }
+        .events-hero-content h1 {
+            color: white;
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            line-height: 1.1;
+        }
+        .events-hero-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin-top: 16px;
+            max-width: 500px;
+        }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 80px 0; }
+        .section-dark { background-color: #0A0A0A; }
+        .section-alt { background-color: #0F0F0F; }
+        .section-gradient { background: linear-gradient(120deg, #F97310 0%, #0A0A0A 80%); }
+        body.light-mode .section-gradient { background: linear-gradient(120deg, #F97310 0%, #E0E0E0 80%); }
+        .section-title { text-align: center; margin-bottom: 56px; }
+        .section-title span { font-size: 48px; display: inline-block; margin-bottom: 16px; }
+        .section-title h2 { color: white; margin-bottom: 8px; }
+        body.light-mode .section-title h2 { color: #111111; }
+        .section-title p { color: var(--gray-muted); }
+
+        /* ===== GRIDS ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .grid-3 {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        .grid-4 {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        /* ===== EVENT CARDS ===== */
+        .event-card {
+            background: #1A1A1A;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(249, 115, 22, 0.1);
+            cursor: pointer;
+        }
+        .event-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.15);
+        }
+        .event-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .event-card-content {
+            padding: 24px 28px 28px;
+        }
+        .event-card-content .event-date {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .event-card-content h3 {
+            font-size: 1.2rem;
+            margin: 8px 0 6px;
+        }
+        .event-card-content p {
+            color: var(--gray-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .event-card-content .event-tag {
+            display: inline-block;
+            background: rgba(249, 115, 22, 0.15);
+            color: var(--accent);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
+        /* ===== EVENT DETAIL POPUP ===== */
+        .detail-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .detail-overlay.active {
+            display: flex;
+        }
+        .event-detail {
+            background: #1A1A1A;
+            border-radius: 28px;
+            max-width: 620px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 36px 40px;
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .event-detail::-webkit-scrollbar { width: 4px; }
+        .event-detail::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+        .event-detail .close-detail {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            transition: 0.3s;
+            padding: 4px 12px;
+            border-radius: 8px;
+        }
+        .event-detail .close-detail:hover { background: rgba(255,255,255,0.1); }
+        .event-detail img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 16px;
+        }
+        .event-detail h2 { font-size: 1.6rem; margin-bottom: 4px; }
+        .event-detail .detail-meta {
+            color: var(--gray-muted);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+        .event-detail .detail-meta strong { color: white; }
+        .event-detail p {
+            color: #D1D5DB;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .event-detail .detail-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== PAST EVENTS ===== */
+        .past-event-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+            border-left: 3px solid var(--gray-muted);
+        }
+        .past-event-card:hover {
+            transform: translateX(4px);
+            border-left-color: var(--accent);
+        }
+        .past-event-card .past-title { font-weight: 600; }
+        .past-event-card .past-date { color: var(--gray-muted); font-size: 0.8rem; }
+        .past-event-card .past-status {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 20px;
+            background: rgba(156, 163, 175, 0.15);
+            color: var(--gray-muted);
+        }
+
+        /* ===== COMMUNITY CARDS ===== */
+        .community-card {
+            background: #1A1A1A;
+            border-radius: 20px;
+            padding: 30px 24px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid rgba(249, 115, 22, 0.08);
+        }
+        .community-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        .community-card .icon { font-size: 44px; display: block; margin-bottom: 12px; }
+        .community-card h4 { margin-bottom: 4px; }
+        .community-card p { color: var(--gray-muted); font-size: 0.85rem; }
+        .community-card .schedule {
+            margin-top: 12px;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        /* ===== STATS ===== */
+        .stat-box {
+            text-align: center;
+            padding: 28px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(249, 115, 22, 0.1);
+            transition: 0.3s;
+        }
+        .stat-box:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        .stat-number {
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+        .stat-label { margin-top: 6px; font-weight: 600; font-size: 0.9rem; }
+
+        /* ===== CTA ===== */
+        .cta-box {
+            background: #1A1A1A;
+            border-radius: 28px;
+            padding: 48px 40px;
+            text-align: center;
+            border: 1px solid rgba(249, 115, 22, 0.2);
+        }
+        .cta-box h2 { margin-bottom: 8px; }
+        .cta-box p {
+            color: var(--gray-muted);
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0A0A0A;
+            border-top: 1px solid #2A2A2A;
+            padding: 64px 0 32px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-col h4 {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a {
+            color: var(--gray-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom {
+            border-top: 1px solid #2A2A2A;
+            padding-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.75rem;
+            color: var(--gray-muted);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            section { padding: 60px 0; }
+            .events-hero { min-height: 50vh; padding-top: 80px; }
+            .events-hero-content { text-align: center; }
+            .events-hero-content p { margin-left: auto; margin-right: auto; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 24px; }
+            .section-title { margin-bottom: 40px; }
+            .section-title span { font-size: 36px; }
+            .section-title h2 { font-size: 1.8rem; }
+            .event-detail { padding: 24px 20px; max-width: 95%; }
+            .event-detail h2 { font-size: 1.3rem; }
+            .past-event-card { flex-wrap: wrap; gap: 8px; }
+            .cta-box { padding: 32px 24px; }
+            .stat-number { font-size: 2rem; }
+            .footer-grid { gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container { padding: 8px 16px; }
+            .logo-text { font-size: 1.3rem; }
+            .btn-primary, .btn-outline { padding: 10px 20px; font-size: 0.9rem; }
+            .events-hero { min-height: 40vh; }
+            .events-hero-content h1 { font-size: 1.8rem; }
+            .event-card img { height: 180px; }
+            .event-detail img { height: 180px; }
+            .event-detail { padding: 18px 16px; }
+            .community-card { padding: 24px 16px; }
+        }
+
+        /* RTL Support */
+        [dir="rtl"] .past-event-card {
+            border-left: none;
+            border-right: 3px solid var(--gray-muted);
+        }
+        [dir="rtl"] .past-event-card:hover {
+            transform: translateX(-4px);
+            border-right-color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobileMenu">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <a href="index.html" class="logo-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span class="logo-text"><span>Summit</span>Grip</span>
+            </a>
+            <button onclick="closeMobileMenu()" style="background:rgba(249,115,22,0.2); border:none; border-radius:12px; padding:8px 12px; cursor:pointer; color:inherit; font-size:18px;">✕</button>
+        </div>
+        
+        <button onclick="toggleMobileSubmenu('mobileHomeSub')" class="mobile-nav-link">
+            <span>Home</span> <span>▼</span>
+        </button>
+        <div id="mobileHomeSub" class="mobile-submenu">
+            <a href="index.html">Home1</a>
+            <a href="home2.html">Home2</a>
+        </div>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="climb.html" class="mobile-nav-link">Climb</a>
+        <a href="training.html" class="mobile-nav-link">Training</a>
+        <a href="event.html" class="mobile-nav-link active-mobile">Events</a>
+        <a href="faq.html" class="mobile-nav-link">FAQ</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+        
+        <div style="height:1px; background:#2A2A2A; margin:16px 0;"></div>
+        
+        <button onclick="toggleMobileSubmenu('mobileAuthSub')" class="control-btn-mobile">
+            <span>Account</span> <span>▼</span>
+        </button>
+        <div id="mobileAuthSub" class="mobile-submenu">
+            <a href="login.html">Login</a>
+            <a href="register.html">Sign Up</a>
+        </div>
+        
+        <div class="control-btn-mobile" onclick="toggleDirectionMobile()">
+            <span>RTL Mode</span>
+            <span id="mobileDirText">LTR</span>
+        </div>
+        <div class="control-btn-mobile" onclick="toggleThemeMobile()">
+            <span>Dark / Light Mode</span>
+            <span>🌓</span>
+        </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span class="logo-text"><span>Summit</span>Grip</span>
+            </a>
+
+            <div class="desktop-nav-links">
+                <div class="dropdown">
+                    <button onclick="toggleDropdown('homeMenu', event)" class="nav-link">Home <span>▼</span></button>
+                    <div id="homeMenu" class="dropdown-content">
+                        <a href="index.html">Home1</a>
+                        <a href="home2.html">Home2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="climb.html" class="nav-link">Climb</a>
+                <a href="training.html" class="nav-link">Training</a>
+                <a href="event.html" class="nav-link active-page">Events</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+
+            <div class="desktop-controls-wrapper">
+                <button onclick="toggleDirection()" class="desktop-control-btn">
+                    <span>🌐</span> <span id="dirTextDesktop">LTR</span>
+                </button>
+                <button onclick="toggleTheme()" class="desktop-control-btn">
+                    <span>🌙</span> <span id="themeTextDesktop">Dark</span>
+                </button>
+                <div class="dropdown">
+                    <button onclick="toggleDropdown('userMenuDesktop', event)" class="desktop-control-btn">
+                        <span>👤</span> <span>Account</span> <span>▼</span>
+                    </button>
+                    <div id="userMenuDesktop" class="dropdown-content">
+                        <a href="login.html">LOGIN</a>
+                        <a href="register.html">SIGNUP</a>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: EVENTS HERO -->
+    <div class="events-hero">
+        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1920&h=800&fit=crop" class="hero-bg" alt="Events at SummitGrip">
+        <div class="hero-overlay"></div>
+        <div class="container events-hero-content">
+            <div class="hero-badge">🎉 Join the Community</div>
+            <h1>Events That <span class="text-accent">Inspire</span></h1>
+            <p>From competitions to community meetups — there's always something happening at SummitGrip.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 2: UPCOMING EVENTS -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-title">
+                <span>📅</span>
+                <h2>Upcoming Events</h2>
+                <p>Don't miss out — mark your calendar!</p>
+            </div>
+            <div class="grid-3" id="eventGrid">
+                <div class="event-card" onclick="openDetail('event1')">
+                    <img src="images/e3.webp" alt="Winter Bouldering Classic">
+                    <div class="event-card-content">
+                        <div class="event-date">📍 Dec 15, 2026 • 10:00 AM</div>
+                        <h3>Winter Bouldering Classic</h3>
+                        <p>Our biggest competition of the season. Open to all levels with prizes, food trucks, and a live DJ.</p>
+                        <span class="event-tag">🏆 Competition</span>
+                    </div>
+                </div>
+                <div class="event-card" onclick="openDetail('event2')">
+                    <img src="images/e2.webp" alt="Technique Clinic">
+                    <div class="event-card-content">
+                        <div class="event-date">📍 Jan 5, 2027 • 6:00 PM</div>
+                        <h3>Footwork Technique Clinic</h3>
+                        <p>Learn precision foot placement and body positioning from Head Coach Alex Rivera.</p>
+                        <span class="event-tag">🧗 Clinic</span>
+                    </div>
+                </div>
+                <div class="event-card" onclick="openDetail('event3')">
+                    <img src="images/e1.avif" alt="Community Climb Night">
+                    <div class="event-card-content">
+                        <div class="event-date">📍 Every Wednesday • 7:00 PM</div>
+                        <h3>Community Climb Night</h3>
+                        <p>Free for members, $10 for guests. Meet new climbing partners and enjoy friendly competition.</p>
+                        <span class="event-tag">🤝 Social</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: EVENT DETAIL POPUP -->
+    <div class="detail-overlay" id="detailOverlay" onclick="closeDetail(event)">
+        <div class="event-detail" id="eventDetail" onclick="event.stopPropagation()">
+            <button class="close-detail" onclick="closeDetail()">✕</button>
+            <div id="detailContent"></div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: PAST EVENTS -->
+    <section class="section-alt">
+        <div class="container">
+            <div class="section-title">
+                <span>📜</span>
+                <h2>Past Events</h2>
+                <p>Relive the highlights</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:12px; max-width:700px; margin:0 auto;">
+                <div class="past-event-card">
+                    <span class="past-title">🏆 Fall Lead Climbing Cup</span>
+                    <span class="past-date">Nov 10, 2026</span>
+                    <span class="past-status">✅ Completed</span>
+                </div>
+                <div class="past-event-card">
+                    <span class="past-title">🧗 Youth Team Tryouts</span>
+                    <span class="past-date">Oct 20, 2026</span>
+                    <span class="past-status">✅ Completed</span>
+                </div>
+                <div class="past-event-card">
+                    <span class="past-title">🎪 Gear Swap & Expo</span>
+                    <span class="past-date">Oct 5, 2026</span>
+                    <span class="past-status">✅ Completed</span>
+                </div>
+                <div class="past-event-card">
+                    <span class="past-title">🔥 Summer Speed Series</span>
+                    <span class="past-date">Sep 15, 2026</span>
+                    <span class="past-status">✅ Completed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: COMMUNITY EVENTS -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-title">
+                <span>🤝</span>
+                <h2>Community Events</h2>
+                <p>Regular gatherings for everyone</p>
+            </div>
+            <div class="grid-3">
+                <div class="community-card">
+                    <span class="icon">🧗</span>
+                    <h4>Weekly Climb Night</h4>
+                    <p>Every Wednesday at 7pm. All levels welcome. Find your climbing crew.</p>
+                    <div class="schedule">📅 Every Wednesday • 7:00 PM</div>
+                </div>
+                <div class="community-card">
+                    <span class="icon">🎯</span>
+                    <h4>Youth Climbing Club</h4>
+                    <p>Weekly sessions for young climbers aged 8-16. Build skills and confidence.</p>
+                    <div class="schedule">📅 Saturdays • 10:00 AM</div>
+                </div>
+                <div class="community-card">
+                    <span class="icon">💪</span>
+                    <h4>Strength & Conditioning</h4>
+                    <p>Group training sessions focused on climbing-specific fitness.</p>
+                    <div class="schedule">📅 Mon/Wed/Fri • 6:00 PM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: STATS + CTA -->
+    <section class="section-gradient">
+        <div class="container">
+            <div class="section-title">
+                <span>📊</span>
+                <h2>Events By The Numbers</h2>
+                <p>Building community since 2012</p>
+            </div>
+            <div class="grid-4" style="margin-bottom:48px;">
+                <div class="stat-box"><div class="stat-number">350+</div><div class="stat-label">Total Events Hosted</div></div>
+                <div class="stat-box"><div class="stat-number">12</div><div class="stat-label">Annual Competitions</div></div>
+                <div class="stat-box"><div class="stat-number">1,200+</div><div class="stat-label">Participants This Year</div></div>
+                <div class="stat-box"><div class="stat-number">98%</div><div class="stat-label">Satisfaction Rate</div></div>
+            </div>
+
+            <div class="cta-box">
+                <h2>Want to Host an Event?</h2>
+                <p>We're always looking for new ideas. Whether it's a comp, workshop, or social — let's make it happen.</p>
+                <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+                    <a href="contact.html" class="btn-primary">📬 Contact Us</a>
+                    <a href="#" class="btn-outline">📋 Propose Event</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo-brand" style="margin-bottom:16px; display:inline-flex;">
+                        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        <span class="logo-text"><span>Summit</span>Grip</span>
+                    </a>
+                    <p style="color:#9CA3AF; font-size:0.85rem; margin-top:12px;">The ultimate indoor climbing & bouldering destination. Send it with us.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>EXPLORE</h4>
+                    <ul>
+                        <li><a href="#">Climbing Routes</a></li>
+                        <li><a href="#">Bouldering</a></li>
+                        <li><a href="#">Memberships</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>SUPPORT</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="#">Safety Rules</a></li>
+                        <li><a href="#">Employment</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>VISIT US</h4>
+                    <ul>
+                        <li>📍 123 Gravity Way, Denver, CO</li>
+                        <li>🕒 Open 24/7 • 365 days</li>
+                        <li>📞 +1 (303) 555-CLIMB</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 SummitGrip — Elevate Your Climb. All Rights Reserved.</span>
+                <div><a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Accessibility</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ----- DROPDOWN -----
+        function toggleDropdown(menuId, e) {
+            if(e) e.stopPropagation();
+            document.querySelectorAll('.dropdown-content').forEach(d => {
+                if(d.id !== menuId) d.classList.remove('show');
+            });
+            const menu = document.getElementById(menuId);
+            if(menu) menu.classList.toggle('show');
+        }
+        window.addEventListener('click', () => {
+            document.querySelectorAll('.dropdown-content').forEach(d => d.classList.remove('show'));
+        });
+
+        // ----- MOBILE MENU -----
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.getElementById('mobileMenuOverlay').classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+        function toggleMobileSubmenu(id) {
+            const sub = document.getElementById(id);
+            if(sub) sub.classList.toggle('open');
+        }
+
+        // ----- DIRECTION -----
+        function toggleDirection() {
+            const html = document.documentElement;
+            const newDir = html.dir === 'rtl' ? 'ltr' : 'rtl';
+            html.dir = newDir;
+            const dirTextDesktop = document.getElementById('dirTextDesktop');
+            const mobileDirText = document.getElementById('mobileDirText');
+            if(dirTextDesktop) dirTextDesktop.innerText = newDir.toUpperCase();
+            if(mobileDirText) mobileDirText.innerText = newDir.toUpperCase();
+        }
+        function toggleDirectionMobile() { toggleDirection(); }
+
+        // ----- THEME -----
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+            const isLight = body.classList.contains('light-mode');
+            const themeTextDesktop = document.getElementById('themeTextDesktop');
+            if(themeTextDesktop) {
+                themeTextDesktop.innerText = isLight ? 'Light' : 'Dark';
+            }
+            localStorage.setItem('summitTheme', isLight ? 'light' : 'dark');
+        }
+        function toggleThemeMobile() { toggleTheme(); }
+
+        const savedTheme = localStorage.getItem('summitTheme');
+        if(savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            const themeTextDesktop = document.getElementById('themeTextDesktop');
+            if(themeTextDesktop) themeTextDesktop.innerText = 'Light';
+        }
+
+        // ----- EVENT DETAIL DATA -----
+        const eventData = {
+            event1: {
+                title: 'Winter Bouldering Classic',
+                date: 'December 15, 2026 • 10:00 AM – 6:00 PM',
+                image: 'images/e3.webp',
+                description: 'SummitGrip\'s signature competition event! The Winter Bouldering Classic is open to climbers of all levels. With categories for beginners, intermediate, and advanced, everyone gets a chance to shine. Enjoy food trucks, a live DJ, and amazing prizes from our sponsors. Registration includes a commemorative t-shirt and free food.',
+                details: '📍 Location: SummitGrip Main Gym\n👥 Open to: All levels (Beginner/Intermediate/Advanced)\n🏆 Prizes: Gear packages, gift cards, and trophies\n🎟️ Entry: $45 (includes t-shirt + food)',
+                price: '$45',
+                tag: '🏆 Competition'
+            },
+            event2: {
+                title: 'Footwork Technique Clinic',
+                date: 'January 5, 2027 • 6:00 PM – 8:30 PM',
+                image: 'images/e2.webp',
+                description: 'Join Head Coach Alex Rivera for an in-depth clinic focused on footwork — the most overlooked skill in climbing. You\'ll learn precision foot placement, body positioning, and how to save energy with efficient movement. This hands-on clinic includes video analysis and personalized feedback.',
+                details: '📍 Location: Training Lab\n👥 Open to: Intermediate climbers (5.9+)\n🎯 Focus: Precision footwork, body positioning, energy efficiency\n🎟️ Entry: $25 (members) / $35 (non-members)',
+                price: '$25 - $35',
+                tag: '🧗 Clinic'
+            },
+            event3: {
+                title: 'Community Climb Night',
+                date: 'Every Wednesday • 7:00 PM – 10:00 PM',
+                image: 'images/e1.avif',
+                description: 'Our most popular weekly event! Community Climb Night is the perfect way to meet new climbing partners and enjoy a relaxed evening of climbing. We set up fun challenges, provide snacks, and create a welcoming environment for climbers of all levels.',
+                details: '📍 Location: Entire Gym\n👥 Open to: Everyone (all levels welcome)\n🎯 Format: Casual climbing with partner matching\n🎟️ Entry: Free for members / $10 for guests',
+                price: 'Free for members',
+                tag: '🤝 Social'
+            }
+        };
+
+        // ----- OPEN EVENT DETAIL -----
+        function openDetail(eventId) {
+            const data = eventData[eventId];
+            if (!data) return;
+
+            const overlay = document.getElementById('detailOverlay');
+            const content = document.getElementById('detailContent');
+
+            content.innerHTML = `
+                <img src="${data.image}" alt="${data.title}">
+                <h2>${data.title}</h2>
+                <div class="detail-meta"><strong>📅 ${data.date}</strong></div>
+                <p>${data.description}</p>
+                <div style="margin-top:16px; padding:16px; background:rgba(249,115,22,0.08); border-radius:12px; border-left:3px solid var(--accent);">
+                    <pre style="color:var(--gray-muted); font-family:'Inter', sans-serif; font-size:0.9rem; white-space:pre-wrap; line-height:1.8;">${data.details}</pre>
+                </div>
+                <div style="margin-top:12px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                    <span style="color:var(--accent); font-weight:700; font-size:1.2rem;">${data.price}</span>
+                    <span style="background:rgba(249,115,22,0.15); color:var(--accent); padding:4px 16px; border-radius:20px; font-size:0.8rem; font-weight:600;">${data.tag}</span>
+                </div>
+                <div class="detail-actions">
+                    <button class="btn-primary" onclick="registerEvent('${data.title}')">🎟️ Register Now</button>
+                    <button class="btn-outline" onclick="closeDetail()">Close</button>
+                </div>
+            `;
+
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // ----- CLOSE EVENT DETAIL -----
+        function closeDetail(e) {
+            if (e && e.target !== e.currentTarget) return;
+            document.getElementById('detailOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ----- REGISTER FOR EVENT -----
+        function registerEvent(eventName) {
+            alert(`✅ You've registered for "${eventName}"!\n\nWe'll send you a confirmation email with all the details.`);
+            closeDetail();
+        }
+
+        // ----- ESCAPE KEY -----
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeDetail();
+        });
+    </script>
+
+</body>
+</html>

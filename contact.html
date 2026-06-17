@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Contact SummitGrip | Get In Touch | Premier Climbing Gym</title>
+    <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=64&h=64&fit=crop">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A;
+            color: #FFFFFF;
+            line-height: 1.5;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Light Mode */
+        body.light-mode {
+            background-color: #F5F5F5;
+            color: #111111;
+        }
+
+        body.light-mode .card-white {
+            background: #FFFFFF;
+            color: #0A0A0A;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        body.light-mode .contact-card {
+            background: #FFFFFF;
+        }
+        body.light-mode .contact-card p {
+            color: #4B5563;
+        }
+        body.light-mode .section-dark {
+            background-color: #F0F0F0;
+        }
+        body.light-mode .section-alt {
+            background-color: #E8E8E8;
+        }
+        body.light-mode footer {
+            background: #FFFFFF;
+            border-top: 1px solid #E5E5E5;
+        }
+        body.light-mode .footer-col a {
+            color: #6B7280;
+        }
+        body.light-mode .footer-col p,
+        body.light-mode .footer-bottom {
+            color: #4B5563 !important;
+        }
+        body.light-mode .nav-container {
+            background: rgba(245, 245, 245, 0.95);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+        body.light-mode .nav-link,
+        body.light-mode .desktop-control-btn,
+        body.light-mode .mobile-nav-link,
+        body.light-mode .control-btn-mobile {
+            color: #111111 !important;
+        }
+        body.light-mode .dropdown-content {
+            background-color: #FFFFFF;
+            border: 1px solid #F97316;
+        }
+        body.light-mode .dropdown-content a {
+            color: #111111;
+        }
+        body.light-mode .section-title p {
+            color: #4B5563 !important;
+        }
+        body.light-mode .contact-detail-card {
+            background: #FFFFFF;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            color: #111111;
+        }
+        body.light-mode .faq-card {
+            background: rgba(0,0,0,0.04);
+            color: #111111;
+        }
+        body.light-mode .faq-card p {
+            color: #4B5563;
+        }
+        body.light-mode .hero-overlay {
+            background: linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 100%);
+        }
+        body.light-mode .hero-badge {
+            background: rgba(249, 115, 22, 0.9);
+            color: white;
+        }
+        body.light-mode .contact-hero h1 {
+            color: #FFFFFF !important;
+        }
+        body.light-mode .contact-hero p {
+            color: rgba(255,255,255,0.95) !important;
+        }
+        body.light-mode .form-group input,
+        body.light-mode .form-group textarea,
+        body.light-mode .form-group select {
+            background: #FFFFFF;
+            color: #111111;
+            border: 1px solid #D1D5DB;
+        }
+        body.light-mode .map-container {
+            border: 2px solid #F97316;
+        }
+
+        /* Color Variables */
+        :root {
+            --accent: #F97316;
+            --accent-hover: #ea580c;
+            --gray-muted: #9CA3AF;
+        }
+
+        .text-accent { color: var(--accent) !important; }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: white;
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 24px;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 8px 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            transition: background 0.3s ease;
+        }
+        .logo-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .logo-icon { width: 32px; height: 32px; color: var(--accent); }
+        .logo-text { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.02em; color: white; }
+        body.light-mode .logo-text { color: #111111; }
+        .logo-text span:first-child { color: var(--accent); }
+
+        .desktop-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-link {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: white !important;
+            text-decoration: none;
+            white-space: nowrap;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .nav-link:hover, .nav-link.active-page {
+            background-color: var(--accent) !important;
+            color: white !important;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #1A1A1A;
+            min-width: 160px;
+            border-radius: 12px;
+            border: 1px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 100;
+            overflow: hidden;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+        .dropdown-content a:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        .dropdown-content.show { display: block; }
+
+        .desktop-controls-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .desktop-control-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            background: rgba(249, 115, 22, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: white;
+            border: none;
+        }
+        .desktop-control-btn:hover { background: rgba(249, 115, 22, 0.5); }
+
+        .mobile-menu-btn {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(249, 115, 22, 0.2);
+            cursor: pointer;
+            border: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav-links { display: flex !important; }
+            .desktop-controls-wrapper { display: flex !important; }
+            .mobile-menu-btn { display: none !important; }
+        }
+        @media (max-width: 1023px) {
+            .desktop-nav-links { display: none !important; }
+            .desktop-controls-wrapper { display: none !important; }
+            .mobile-menu-btn { display: flex !important; }
+        }
+
+        /* Mobile Menu Panel */
+        #mobileMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 85%;
+            max-width: 380px;
+            height: 100vh;
+            background-color: #0A0A0A;
+            z-index: 1100;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            overflow-y: auto;
+            padding: 1.5rem;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.5);
+            border-right: 2px solid var(--accent);
+        }
+        body.light-mode #mobileMenu {
+            background-color: #FFFFFF;
+        }
+        #mobileMenu.open { transform: translateX(0); }
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+        .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+        body.menu-open { overflow: hidden; }
+
+        .mobile-nav-link {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: white !important;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+        }
+        body.light-mode .mobile-nav-link { color: #111111 !important; }
+        .mobile-nav-link.active-mobile, .mobile-nav-link:hover {
+            background-color: var(--accent) !important;
+            color: white !important;
+        }
+        .mobile-submenu {
+            display: none;
+            flex-direction: column;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent);
+            margin-bottom: 8px;
+        }
+        .mobile-submenu.open { display: flex; }
+        .mobile-submenu a {
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: white !important;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        body.light-mode .mobile-submenu a { color: #111111 !important; }
+        .mobile-submenu a:hover { background-color: var(--accent); color: white !important; }
+        .control-btn-mobile {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        body.light-mode .control-btn-mobile { color: #111111; }
+
+        /* ===== CONTACT HERO ===== */
+        .contact-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.6) 100%);
+            z-index: 1;
+        }
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(249, 115, 22, 0.3);
+            backdrop-filter: blur(4px);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            color: white;
+        }
+        .contact-hero-content h1 {
+            color: white;
+            font-size: clamp(2.2rem, 6vw, 4rem);
+        }
+        .contact-hero-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 80px 0; }
+        .section-dark { background-color: #0A0A0A; }
+        .section-alt { background-color: #0F0F0F; }
+        .section-gradient { background: linear-gradient(120deg, #F97310 0%, #0A0A0A 80%); }
+        body.light-mode .section-gradient { background: linear-gradient(120deg, #F97310 0%, #E0E0E0 80%); }
+        .section-title { text-align: center; margin-bottom: 56px; }
+        .section-title span { font-size: 48px; display: inline-block; margin-bottom: 16px; }
+        .section-title h2 { color: white; margin-bottom: 8px; }
+        body.light-mode .section-title h2 { color: #111111; }
+        .section-title p { color: var(--gray-muted); }
+
+        /* ===== GRIDS ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+        .grid-3 {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        .grid-4 {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* ===== CONTACT CARDS ===== */
+        .contact-detail-card {
+            background: #1A1A1A;
+            border-radius: 28px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.4s ease;
+            color: white;
+            border: 1px solid rgba(249, 115, 22, 0.2);
+        }
+        body.light-mode .contact-detail-card { background: #FFFFFF; color: #111111; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .contact-detail-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(249,115,22,0.3); }
+        .contact-detail-card span { font-size: 40px; display: inline-block; margin-bottom: 12px; }
+        .contact-detail-card h3 { margin-bottom: 8px; }
+        .contact-detail-card p { color: var(--gray-muted); }
+
+        /* ===== FORM ===== */
+        .form-card {
+            background: #1A1A1A;
+            border-radius: 28px;
+            padding: 40px;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+        body.light-mode .form-card { background: #FFFFFF; }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            background: #0A0A0A;
+            border: 1px solid #2A2A2A;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+        body.light-mode .form-group input,
+        body.light-mode .form-group textarea,
+        body.light-mode .form-group select {
+            background: #F5F5F5;
+            color: #111111;
+            border: 1px solid #D1D5DB;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.3);
+        }
+        .form-group textarea { min-height: 130px; resize: vertical; }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+        /* ===== MAP ===== */
+        .map-container {
+            border-radius: 28px;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            height: 380px;
+            width: 100%;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-card {
+            background: rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 24px 28px;
+            border-left: 4px solid var(--accent);
+            transition: 0.3s;
+            color: white;
+        }
+        body.light-mode .faq-card { background: rgba(0,0,0,0.04); color: #111111; }
+        .faq-card h3 { margin-bottom: 8px; font-size: 1.1rem; }
+        .faq-card p { color: #D1D5DB; font-size: 0.95rem; }
+        body.light-mode .faq-card p { color: #4B5563; }
+
+        /* ===== WHY CONNECT ===== */
+        .connect-icon-box {
+            text-align: center;
+            padding: 24px;
+            border-radius: 24px;
+            background: rgba(249, 115, 22, 0.08);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            transition: 0.3s;
+        }
+        .connect-icon-box:hover { background: rgba(249, 115, 22, 0.18); transform: scale(1.02); }
+        .connect-icon-box span { font-size: 36px; display: block; margin-bottom: 12px; }
+
+        /* ===== FOOTER ===== */
+        footer { background: #0A0A0A; border-top: 1px solid #2A2A2A; padding: 64px 0 32px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 48px; margin-bottom: 48px; }
+        .footer-col h4 { color: var(--accent); font-size: 1rem; margin-bottom: 20px; letter-spacing: 0.05em; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a { color: var(--gray-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom { border-top: 1px solid #2A2A2A; padding-top: 32px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 0.75rem; color: var(--gray-muted); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            section { padding: 60px 0; }
+            .contact-hero { min-height: 50vh; padding-top: 80px; }
+            .contact-hero-content p { font-size: 1rem; padding: 0 16px; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 24px; }
+            .form-card { padding: 28px; }
+            .map-container { height: 280px; }
+            .section-title { margin-bottom: 40px; }
+            .section-title span { font-size: 36px; }
+            .section-title h2 { font-size: 1.8rem; }
+            .footer-grid { gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .nav-container { padding: 8px 16px; }
+            .logo-text { font-size: 1.3rem; }
+            .btn-primary { padding: 10px 20px; font-size: 0.9rem; }
+            .contact-hero { min-height: 45vh; }
+            .contact-detail-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobileMenu">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <a href="index.html" class="logo-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span class="logo-text"><span>Summit</span>Grip</span>
+            </a>
+            <button onclick="closeMobileMenu()" style="background:rgba(249,115,22,0.2); border:none; border-radius:12px; padding:8px 12px; cursor:pointer; color:inherit; font-size:18px;">✕</button>
+        </div>
+        
+        <button onclick="toggleMobileSubmenu('mobileHomeSub')" class="mobile-nav-link">
+            <span>Home</span> <span>▼</span>
+        </button>
+        <div id="mobileHomeSub" class="mobile-submenu">
+            <a href="index.html">Home1</a>
+            <a href="home2.html">Home2</a>
+        </div>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="climb.html" class="mobile-nav-link">Climb</a>
+        <a href="training.html" class="mobile-nav-link">Training</a>
+        <a href="event.html" class="mobile-nav-link">Events</a>
+        <a href="faq.html" class="mobile-nav-link">FAQ</a>
+        <a href="contact.html" class="mobile-nav-link active-mobile">Contact</a>
+        
+        <div style="height:1px; background:#2A2A2A; margin:16px 0;"></div>
+        
+        <button onclick="toggleMobileSubmenu('mobileAuthSub')" class="control-btn-mobile">
+            <span>Account</span> <span>▼</span>
+        </button>
+        <div id="mobileAuthSub" class="mobile-submenu">
+            <a href="login.html">Login</a>
+            <a href="register.html">Sign Up</a>
+        </div>
+        
+        <div class="control-btn-mobile" onclick="toggleDirectionMobile()">
+            <span>RTL Mode</span>
+            <span id="mobileDirText">LTR</span>
+        </div>
+        <div class="control-btn-mobile" onclick="toggleThemeMobile()">
+            <span>Dark / Light Mode</span>
+            <span>🌓</span>
+        </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span class="logo-text"><span>Summit</span>Grip</span>
+            </a>
+
+            <div class="desktop-nav-links">
+                <div class="dropdown">
+                    <button onclick="toggleDropdown('homeMenu', event)" class="nav-link">Home <span>▼</span></button>
+                    <div id="homeMenu" class="dropdown-content">
+                        <a href="index.html">Home1</a>
+                        <a href="home2.html">Home2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="climb.html" class="nav-link">Climb</a>
+                <a href="training.html" class="nav-link">Training</a>
+                <a href="event.html" class="nav-link">Events</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link active-page">Contact</a>
+            </div>
+
+            <div class="desktop-controls-wrapper">
+                <button onclick="toggleDirection()" class="desktop-control-btn">
+                    <span>🌐</span> <span id="dirTextDesktop">LTR</span>
+                </button>
+                <button onclick="toggleTheme()" class="desktop-control-btn">
+                    <span>🌙</span> <span id="themeTextDesktop">Dark</span>
+                </button>
+                <div class="dropdown">
+                    <button onclick="toggleDropdown('userMenuDesktop', event)" class="desktop-control-btn">
+                        <span>👤</span> <span>Account</span> <span>▼</span>
+                    </button>
+                    <div id="userMenuDesktop" class="dropdown-content">
+                        <a href="login.html">LOGIN</a>
+                        <a href="register.html">SIGNUP</a>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: HERO -->
+    <div class="contact-hero">
+        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1920&h=800&fit=crop" class="hero-bg" alt="Climbing gym contact">
+        <div class="hero-overlay"></div>
+        <div class="container contact-hero-content">
+            <div class="hero-badge">📬 Let's Connect</div>
+            <h1>Reach Out & <span class="text-accent">Climb</span> With Us</h1>
+            <p>Whether you have a question, want to book an event, or just say hello — we're here for you.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 2: CONTACT DETAILS -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-title"><span>📍</span><h2>Get In Touch</h2><p>We'd love to hear from you</p></div>
+            <div class="grid-3">
+                <div class="contact-detail-card">
+                    <span>📞</span>
+                    <h3>Call Us</h3>
+                    <p>+1 (303) 555-CLIMB</p>
+                    <p style="font-size:0.85rem; margin-top:8px;">Mon–Sat: 6am – 11pm</p>
+                </div>
+                <div class="contact-detail-card">
+                    <span>✉️</span>
+                    <h3>Email</h3>
+                    <p>hello@summitgrip.com</p>
+                    <p style="font-size:0.85rem; margin-top:8px;">We reply within 24h</p>
+                </div>
+                <div class="contact-detail-card">
+                    <span>📍</span>
+                    <h3>Visit Us</h3>
+                    <p>123 Gravity Way, Denver, CO</p>
+                    <p style="font-size:0.85rem; margin-top:8px;">Open 24/7 • 365 days</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: CONTACT FORM + MAP (split layout) -->
+    <section class="section-alt">
+        <div class="container">
+            <div class="section-title"><span>✉️</span><h2>Send Us a Message</h2><p>We'll get back to you faster than a dyno</p></div>
+            <div class="grid-2">
+                <div class="form-card">
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" placeholder="Alex Honnold" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="alex@climb.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject">
+                                <option>General Inquiry</option>
+                                <option>Membership</option>
+                                <option>Event Booking</option>
+                                <option>Youth Programs</option>
+                                <option>Feedback</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Tell us what's on your mind..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+                            <span>🚀</span> Send Message
+                        </button>
+                        <div id="formFeedback" style="margin-top:16px; font-weight:600; text-align:center;"></div>
+                    </form>
+                </div>
+                <div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.225540003981!2d-104.990119684607!3d39.739235979428195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c7f4c2b7f7b6f%3A0x8c9e8c8e8c8e8c8e!2sDenver%2C%20CO!5e0!3m2!1sen!2sus!4v1644861234567" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div style="margin-top:20px; text-align:center; color:var(--gray-muted); font-size:0.9rem;">
+                        <p>📍 123 Gravity Way, Denver, CO 80202</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: WHY CONNECT (social proof / values) -->
+    <section class="section-gradient">
+        <div class="container">
+            <div class="section-title"><span>💬</span><h2>Why Connect With Us?</h2><p>We're more than a gym — we're a community</p></div>
+            <div class="grid-3">
+                <div class="connect-icon-box">
+                    <span>🧗</span>
+                    <h3>Expert Advice</h3>
+                    <p style="color:var(--gray-muted);">Our staff are climbers first — we'll help you level up.</p>
+                </div>
+                <div class="connect-icon-box">
+                    <span>🎉</span>
+                    <h3>Events & Community</h3>
+                    <p style="color:var(--gray-muted);">From comps to movie nights, there's always something happening.</p>
+                </div>
+                <div class="connect-icon-box">
+                    <span>🛠️</span>
+                    <h3>Gear Support</h3>
+                    <p style="color:var(--gray-muted);">We offer gear demos, repair advice, and pro tips.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: FAQ (contact-related) -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-title"><span>❓</span><h2>Frequently Asked Questions</h2><p>Quick answers before you reach out</p></div>
+            <div class="grid-2" style="max-width:900px; margin:0 auto;">
+                <div class="faq-card">
+                    <h3>What are your opening hours?</h3>
+                    <p>We're open 24/7, 365 days a year. Staffed hours are 6am – 11pm, but members can climb anytime with 24/7 access.</p>
+                </div>
+                <div class="faq-card">
+                    <h3>Do you offer day passes?</h3>
+                    <p>Absolutely! Day passes are $25, and gear rental is available for $10. First time? Ask about our intro pack.</p>
+                </div>
+                <div class="faq-card">
+                    <h3>Can I book a private event?</h3>
+                    <p>Yes! We host birthday parties, team-building events, and private coaching. Contact us and we'll make it happen.</p>
+                </div>
+                <div class="faq-card">
+                    <h3>Is there parking available?</h3>
+                    <p>We have a free parking lot with 80+ spots, plus bike racks and a light rail station 2 blocks away.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CTA / SOCIAL BANNER -->
+    <section class="section-alt" style="padding: 60px 0;">
+        <div class="container" style="text-align:center;">
+            <span style="font-size:56px; display:block; margin-bottom:16px;">📱</span>
+            <h2 style="margin-bottom:12px;">Follow The Climb</h2>
+            <p style="color:var(--gray-muted); max-width:600px; margin:0 auto 32px;">Stay connected on social media for route updates, community highlights, and behind-the-scenes.</p>
+            <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+                <a href="#" class="btn-primary" style="background:#1DA1F2;">🐦 Twitter</a>
+                <a href="#" class="btn-primary" style="background:#E1306C;">📸 Instagram</a>
+                <a href="#" class="btn-primary" style="background:#4267B2;">📘 Facebook</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><a href="#" class="logo-brand" style="margin-bottom:16px; display:inline-flex;"><svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span class="logo-text"><span>Summit</span>Grip</span></a><p style="color:#9CA3AF; font-size:0.85rem; margin-top:12px;">The ultimate indoor climbing & bouldering destination. Send it with us.</p></div>
+                <div class="footer-col"><h4>EXPLORE</h4><ul><li><a href="#">Climbing Routes</a></li><li><a href="#">Bouldering</a></li><li><a href="#">Memberships</a></li><li><a href="#">Gift Cards</a></li></ul></div>
+                <div class="footer-col"><h4>SUPPORT</h4><ul><li><a href="faq.html">FAQs</a></li><li><a href="#">Safety Rules</a></li><li><a href="#">Employment</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+                <div class="footer-col"><h4>VISIT US</h4><ul><li>📍 123 Gravity Way, Denver, CO</li><li>🕒 Open 24/7 • 365 days</li><li>📞 +1 (303) 555-CLIMB</li></ul></div>
+            </div>
+            <div class="footer-bottom"><span>© 2026 SummitGrip — Elevate Your Climb. All Rights Reserved.</span><div><a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Accessibility</a></div></div>
+        </div>
+    </footer>
+
+    <script>
+        // ----- DROPDOWN -----
+        function toggleDropdown(menuId, e) {
+            if(e) e.stopPropagation();
+            document.querySelectorAll('.dropdown-content').forEach(d => {
+                if(d.id !== menuId) d.classList.remove('show');
+            });
+            const menu = document.getElementById(menuId);
+            if(menu) menu.classList.toggle('show');
+        }
+        window.addEventListener('click', () => {
+            document.querySelectorAll('.dropdown-content').forEach(d => d.classList.remove('show'));
+        });
+
+        // ----- MOBILE MENU -----
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.getElementById('mobileMenuOverlay').classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+        function toggleMobileSubmenu(id) {
+            const sub = document.getElementById(id);
+            if(sub) sub.classList.toggle('open');
+        }
+
+        // ----- DIRECTION (RTL/LTR) -----
+        function toggleDirection() {
+            const html = document.documentElement;
+            const newDir = html.dir === 'rtl' ? 'ltr' : 'rtl';
+            html.dir = newDir;
+            const dirTextDesktop = document.getElementById('dirTextDesktop');
+            const mobileDirText = document.getElementById('mobileDirText');
+            if(dirTextDesktop) dirTextDesktop.innerText = newDir.toUpperCase();
+            if(mobileDirText) mobileDirText.innerText = newDir.toUpperCase();
+        }
+        function toggleDirectionMobile() { toggleDirection(); }
+
+        // ----- THEME -----
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+            const isLight = body.classList.contains('light-mode');
+            const themeTextDesktop = document.getElementById('themeTextDesktop');
+            if(themeTextDesktop) {
+                themeTextDesktop.innerText = isLight ? 'Light' : 'Dark';
+            }
+            localStorage.setItem('summitTheme', isLight ? 'light' : 'dark');
+        }
+        function toggleThemeMobile() { toggleTheme(); }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('summitTheme');
+        if(savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            const themeTextDesktop = document.getElementById('themeTextDesktop');
+            if(themeTextDesktop) themeTextDesktop.innerText = 'Light';
+        }
+
+        // ----- FORM HANDLER -----
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const feedback = document.getElementById('formFeedback');
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '⏳ Sending...';
+            feedback.style.color = '#F97316';
+            feedback.textContent = 'Sending your message...';
+
+            // Simulate async send
+            setTimeout(() => {
+                feedback.style.color = '#22c55e';
+                feedback.textContent = '✅ Message sent! We\'ll get back to you soon.';
+                btn.disabled = false;
+                btn.innerHTML = '🚀 Send Message';
+                document.getElementById('contactForm').reset();
+                // Reset feedback after 6s
+                setTimeout(() => {
+                    feedback.textContent = '';
+                }, 6000);
+            }, 1500);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>SummitGrip | Premium Climbing Gym | Home 2</title>
+    <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=64&h=64&fit=crop">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A;
+            color: #FFFFFF;
+            line-height: 1.5;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Light Mode */
+        body.light-mode {
+            background-color: #F5F5F5;
+            color: #111111;
+        }
+
+        body.light-mode .card-white {
+            background: #FFFFFF;
+            color: #0A0A0A;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        body.light-mode .feature-card {
+            background: #FFFFFF;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            color: #111111;
+        }
+        body.light-mode .feature-card p {
+            color: #4B5563;
+        }
+        body.light-mode .section-dark {
+            background-color: #F0F0F0;
+        }
+        body.light-mode .section-alt {
+            background-color: #E8E8E8;
+        }
+        body.light-mode footer {
+            background: #FFFFFF;
+            border-top: 1px solid #E5E5E5;
+        }
+        body.light-mode .footer-col a {
+            color: #6B7280;
+        }
+        body.light-mode .footer-col p,
+        body.light-mode .footer-bottom {
+            color: #4B5563 !important;
+        }
+        body.light-mode .nav-container {
+            background: rgba(245, 245, 245, 0.95);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+        body.light-mode .nav-link,
+        body.light-mode .desktop-control-btn,
+        body.light-mode .mobile-nav-link,
+        body.light-mode .control-btn-mobile {
+            color: #111111 !important;
+        }
+        body.light-mode .dropdown-content {
+            background-color: #FFFFFF;
+            border: 1px solid #F97316;
+        }
+        body.light-mode .dropdown-content a {
+            color: #111111;
+        }
+        body.light-mode .section-title p {
+            color: #4B5563 !important;
+        }
+        body.light-mode .hero-overlay {
+            background: linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 100%);
+        }
+        body.light-mode .hero-badge {
+            background: rgba(249, 115, 22, 0.9);
+            color: white;
+        }
+        body.light-mode .home-hero h1 {
+            color: #FFFFFF !important;
+        }
+        body.light-mode .home-hero p {
+            color: rgba(255,255,255,0.95) !important;
+        }
+        body.light-mode .membership-card {
+            background: #FFFFFF;
+            color: #111111;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        body.light-mode .membership-card p {
+            color: #4B5563;
+        }
+        body.light-mode .event-card {
+            background: #FFFFFF;
+            color: #111111;
+        }
+        body.light-mode .event-card p {
+            color: #4B5563;
+        }
+        body.light-mode .gallery-item {
+            border: 2px solid #E5E5E5;
+        }
+
+        /* Color Variables */
+        :root {
+            --accent: #F97316;
+            --accent-hover: #ea580c;
+            --gray-muted: #9CA3AF;
+        }
+
+        .text-accent { color: var(--accent) !important; }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: white;
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--accent);
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-outline:hover { background: var(--accent); color: white; transform: translateY(-2px); }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 24px;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 8px 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            transition: background 0.3s ease;
+        }
+        .logo-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .logo-icon { width: 32px; height: 32px; color: var(--accent); }
+        .logo-text { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.02em; color: white; }
+        body.light-mode .logo-text { color: #111111; }
+        .logo-text span:first-child { color: var(--accent); }
+
+        .desktop-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-link {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: white !important;
+            text-decoration: none;
+            white-space: nowrap;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .nav-link:hover, .nav-link.active-page {
+            background-color: var(--accent) !important;
+            color: white !important;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #1A1A1A;
+            min-width: 160px;
+            border-radius: 12px;
+            border: 1px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 100;
+            overflow: hidden;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+        .dropdown-content a:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        .dropdown-content.show { display: block; }
+
+        .desktop-controls-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .desktop-control-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            background: rgba(249, 115, 22, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: white;
+            border: none;
+        }
+        .desktop-control-btn:hover { background: rgba(249, 115, 22, 0.5); }
+
+        .mobile-menu-btn {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(249, 115, 22, 0.2);
+            cursor: pointer;
+            border: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav-links { display: flex !important; }
+            .desktop-controls-wrapper { display: flex !important; }
+            .mobile-menu-btn { display: none !important; }
+        }
+        @media (max-width: 1023px) {
+            .desktop-nav-links { display: none !important; }
+            .desktop-controls-wrapper { display: none !important; }
+            .mobile-menu-btn { display: flex !important; }
+        }
+
+        /* Mobile Menu Panel */
+        #mobileMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 85%;
+            max-width: 380px;
+            height: 100vh;
+            background-color: #0A0A0A;
+            z-index: 1100;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            overflow-y: auto;
+            padding: 1.5rem;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.5);
+            border-right: 2px solid var(--accent);
+        }
+        body.light-mode #mobileMenu {
+            background-color: #FFFFFF;
+        }
+        #mobileMenu.open { transform: translateX(0); }
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+        .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+        body.menu-open { overflow: hidden; }
+
+        .mobile-nav-link {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: white !important;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+        }
+        body.light-mode .mobile-nav-link { color: #111111 !important; }
+        .mobile-nav-link.active-mobile, .mobile-nav-link:hover {
+            background-color: var(--accent) !important;
+            color: white !important;
+        }
+        .mobile-submenu {
+            display: none;
+            flex-direction: column;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent);
+            margin-bottom: 8px;
+        }
+        .mobile-submenu.open { display: flex; }
+        .mobile-submenu a {
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: white !important;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        body.light-mode .mobile-submenu a { color: #111111 !important; }
+        .mobile-submenu a:hover { background-color: var(--accent); color: white !important; }
+        .control-btn-mobile {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        body.light-mode .control-btn-mobile { color: #111111; }
+
+        /* ===== HERO CAROUSEL ===== */
+        .home-hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+        .hero-slider {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+        .hero-slide.active {
+            opacity: 1;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.5) 100%);
+            z-index: 1;
+        }
+        .home-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+            text-align: left;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(249, 115, 22, 0.3);
+            backdrop-filter: blur(4px);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            color: white;
+        }
+        .home-hero-content h1 {
+            color: white;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            line-height: 1.1;
+        }
+        .home-hero-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.15rem;
+            margin-top: 20px;
+            max-width: 550px;
+        }
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        /* Slider Controls */
+        .slider-controls {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            gap: 12px;
+        }
+        .slider-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slider-dot.active {
+            background: var(--accent);
+            border-color: white;
+            transform: scale(1.2);
+        }
+        .slider-dot:hover { background: var(--accent); }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 80px 0; }
+        .section-dark { background-color: #0A0A0A; }
+        .section-alt { background-color: #0F0F0F; }
+        .section-gradient { background: linear-gradient(120deg, #F97310 0%, #0A0A0A 80%); }
+        body.light-mode .section-gradient { background: linear-gradient(120deg, #F97310 0%, #E0E0E0 80%); }
+        .section-title { text-align: center; margin-bottom: 56px; }
+        .section-title span { font-size: 48px; display: inline-block; margin-bottom: 16px; }
+        .section-title h2 { color: white; margin-bottom: 8px; }
+        body.light-mode .section-title h2 { color: #111111; }
+        .section-title p { color: var(--gray-muted); }
+
+        /* ===== GRIDS ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: start;
+        }
+        .grid-3 {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        .grid-4 {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        /* ===== FEATURE CARDS ===== */
+        .feature-card {
+            background: #1A1A1A;
+            border-radius: 28px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.4s ease;
+            color: white;
+            border: 1px solid rgba(249, 115, 22, 0.15);
+        }
+        body.light-mode .feature-card {
+            background: #FFFFFF;
+            color: #111111;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(249,115,22,0.25);
+            border-color: var(--accent);
+        }
+        .feature-card .icon { font-size: 48px; display: inline-block; margin-bottom: 16px; }
+        .feature-card h3 { margin-bottom: 8px; }
+        .feature-card p { color: var(--gray-muted); font-size: 0.95rem; }
+
+        /* ===== EVENT CARDS ===== */
+        .event-card {
+            background: #1A1A1A;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid rgba(249,115,22,0.1);
+        }
+        body.light-mode .event-card { background: #FFFFFF; }
+        .event-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+        .event-card img { width: 100%; height: 220px; object-fit: cover; }
+        .event-card-content { padding: 24px; }
+        .event-card-content .event-date {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .event-card-content h3 { margin: 8px 0; }
+
+        /* ===== MEMBERSHIP CARDS ===== */
+        .membership-card {
+            background: #1A1A1A;
+            border-radius: 28px;
+            padding: 32px 28px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(249,115,22,0.15);
+            color: white;
+        }
+        body.light-mode .membership-card { background: #FFFFFF; color: #111111; }
+        .membership-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+        .membership-card .price {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin: 16px 0;
+        }
+        .membership-card .price span { font-size: 1.2rem; font-weight: 400; color: var(--gray-muted); }
+        .membership-card ul { list-style: none; margin: 20px 0; }
+        .membership-card ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(249,115,22,0.1);
+            font-size: 0.95rem;
+        }
+        body.light-mode .membership-card ul li { border-bottom-color: #E5E5E5; }
+        .membership-card ul li:last-child { border-bottom: none; }
+        .membership-card.popular {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(249,115,22,0.15);
+        }
+        .membership-card .popular-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 40px;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 200px);
+            gap: 16px;
+        }
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .gallery-item:hover { transform: scale(1.02); }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-item .gallery-overlay span {
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .gallery-item:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 3; }
+        .gallery-item:nth-child(2) { grid-column: 3 / 4; grid-row: 1 / 2; }
+        .gallery-item:nth-child(3) { grid-column: 4 / 5; grid-row: 1 / 2; }
+        .gallery-item:nth-child(4) { grid-column: 3 / 5; grid-row: 2 / 3; }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+            .gallery-item:nth-child(1) { grid-column: 1 / 3; grid-row: auto; height: 250px; }
+            .gallery-item:nth-child(2) { grid-column: 1 / 2; grid-row: auto; height: 180px; }
+            .gallery-item:nth-child(3) { grid-column: 2 / 3; grid-row: auto; height: 180px; }
+            .gallery-item:nth-child(4) { grid-column: 1 / 3; grid-row: auto; height: 200px; }
+        }
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(2),
+            .gallery-item:nth-child(3),
+            .gallery-item:nth-child(4) {
+                grid-column: 1 / 2;
+                height: 200px;
+            }
+        }
+
+        /* ===== STATS ===== */
+        .stat-box {
+            text-align: center;
+            padding: 28px 20px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(249,115,22,0.15);
+            transition: 0.3s;
+        }
+        body.light-mode .stat-box { background: rgba(0,0,0,0.04); }
+        .stat-box:hover { transform: translateY(-4px); border-color: var(--accent); }
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+        .stat-label { margin-top: 8px; font-weight: 600; }
+
+        /* ===== CTA ===== */
+        .cta-box {
+            background: #1A1A1A;
+            border-radius: 32px;
+            padding: 48px 40px;
+            text-align: center;
+            border: 1px solid rgba(249,115,22,0.3);
+        }
+        body.light-mode .cta-box { background: #FFFFFF; }
+        .cta-box h2 { margin-bottom: 12px; }
+        .cta-box p { color: var(--gray-muted); max-width: 600px; margin: 0 auto 24px; }
+
+        /* ===== FOOTER ===== */
+        footer { background: #0A0A0A; border-top: 1px solid #2A2A2A; padding: 64px 0 32px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 48px; margin-bottom: 48px; }
+        .footer-col h4 { color: var(--accent); font-size: 1rem; margin-bottom: 20px; letter-spacing: 0.05em; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a { color: var(--gray-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom { border-top: 1px solid #2A2A2A; padding-top: 32px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 0.75rem; color: var(--gray-muted); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            section { padding: 60px 0; }
+            .home-hero { min-height: 70vh; padding-top: 80px; }
+            .home-hero-content { text-align: center; }
+            .home-hero-content p { margin-left: auto; margin-right: auto; }
+            .hero-cta-group { justify-content: center; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 24px; }
+            .section-title { margin-bottom: 40px; }
+            .section-title span { font-size: 36px; }
+            .section-title h2 { font-size: 1.8rem; }
+            .cta-box { padding: 32px 24px; }
+            .stat-number { font-size: 2.2rem; }
+            .footer-grid { gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .membership-card { padding: 24px 20px; }
+            .slider-controls { bottom: 20px; }
+        }
+        @media (max-width: 480px) {
+            .nav-container { padding: 8px 16px; }
+            .logo-text { font-size: 1.3rem; }
+            .btn-primary, .btn-outline { padding: 10px 20px; font-size: 0.9rem; }
+            .home-hero { min-height: 60vh; }
+            .home-hero-content h1 { font-size: 2rem; }
+            .membership-card .price { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobileMenu">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <a href="index.html" class="logo-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span class="logo-text"><span>Summit</span>Grip</span>
+            </a>
+            <button onclick="closeMobileMenu()" style="background:rgba(249,115,22,0.2); border:none; border-radius:12px; padding:8px 12px; cursor:pointer; color:inherit; font-size:18px;">✕</button>
+        </div>
+        
+        <button onclick="toggleMobileSubmenu('mobileHomeSub')" class="mobile-nav-link active-mobile">
+            <span>Home</span> <span>▼</span>
+        </button>
+        <div id="mobileHomeSub" class="mobile-submenu open">
+            <a href="index.html">Home1</a>
+            <a href="home2.html" style="background-color: var(--accent); color: white !important;">Home2</a>
+        </div>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="climb.html" class="mobile-nav-link">Climb</a>
+        <a href="training.html" class="mobile-nav-link">Training</a>
+        <a href="event.html" class="mobile-nav-link">Events</a>
+        <a href="faq.html" class="mobile-nav-link">FAQ</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+        
+        <div style="height:1px; background:#2A2A2A; margin:16px 0;"></div>
+        
+        <button onclick="toggleMobileSubmenu('mobileAuthSub')" class="control-btn-mobile">
+            <span>Account</span> <span>▼</span>
+        </button>
+        <div id="mobileAuthSub" class="mobile-submenu">
+            <a href="login.html">Login</a>
+            <a href="register.html">Sign Up</a>
+        </div>
+        
+        <div class="control-btn-mobile" onclick="toggleDirectionMobile()">
+            <span>RTL Mode</span>
+            <span id="mobileDirText">LTR</span>
+        </div>
+        <div class="control-btn-mobile" onclick="toggleThemeMobile()">
+            <span>Dark / Light Mode</span>
+            <span>🌓</span>
+        </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span class="logo-text"><span>Summit</span>Grip</span>
+            </a>
+
+            <div class="desktop-nav-links">
+                <div class="dropdown">
+                    <button onclick="toggleDropdown('homeMenu', event)" class="nav-link active-page">Home <span>▼</span></button>
+                    <div id="homeMenu" class="dropdown-content show">
+                        <a href="index.html">Home1</a>
+                        <a href="home2.html" style="background-color: var(--accent); color: white;">Home2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="climb.html" class="nav-link">Climb</a>
+                <a href="training.html" class="nav-link">Training</a>
+                <a href="event.html" class="nav-link">Events</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+
+            <div class="desktop-controls-wrapper">
+                <button onclick="toggleDirection()" class="desktop-control-btn">
+                    <span>🌐</span> <span id="dirTextDesktop">LTR</span>
+                </button>
+                <button onclick="toggleTheme()" class="desktop-control-btn">
+                    <span>🌙</span> <span id="themeTextDesktop">Dark</span>
+                </button>
+                <div class="dropdown">
+                    <button onclick="toggleDropdown('userMenuDesktop', event)" class="desktop-control-btn">
+                        <span>👤</span> <span>Account</span> <span>▼</span>
+                    </button>
+                    <div id="userMenuDesktop" class="dropdown-content">
+                        <a href="login.html">LOGIN</a>
+                        <a href="register.html">SIGNUP</a>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: HERO CAROUSEL -->
+    <div class="home-hero">
+        <div class="hero-slider">
+            <img src="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=1920&h=900&fit=crop" class="hero-slide active" alt="Climbing gym interior">
+            <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1920&h=900&fit=crop" class="hero-slide" alt="Bouldering wall">
+            <img src="https://images.unsplash.com/photo-1546483875-ad9014c88eba?w=1920&h=900&fit=crop" class="hero-slide" alt="Climbing community">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container home-hero-content">
+            <div class="hero-badge">🧗 Premier Climbing Destination</div>
+            <h1>Elevate Your <span class="text-accent">Climb</span></h1>
+            <p>SummitGrip is Colorado's premier indoor climbing gym — world-class routes, expert coaching, and a community that pushes you higher.</p>
+            <div class="hero-cta-group">
+                <a href="register.html" class="btn-primary">Start Climbing →</a>
+                <a href="about.html" class="btn-outline">Learn More</a>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <div class="slider-dot active" onclick="goToSlide(0)"></div>
+            <div class="slider-dot" onclick="goToSlide(1)"></div>
+            <div class="slider-dot" onclick="goToSlide(2)"></div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: FEATURED ROUTES / WHY US -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-title"><span>🧗</span><h2>Why Climb With Us?</h2><p>Built by climbers, for climbers</p></div>
+            <div class="grid-3">
+                <div class="feature-card">
+                    <div class="icon">🏔️</div>
+                    <h3>World-Class Routesetting</h3>
+                    <p>150+ routes refreshed weekly by our team of 5.14 climbers. From beginner-friendly to pro-level projects.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🤝</div>
+                    <h3>Community First</h3>
+                    <p>Weekly meetups, comps, and social events. Find your climbing crew and send together.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💪</div>
+                    <h3>Premium Training</h3>
+                    <p>MoonBoard, campus board, fingerboard wall, and expert coaches to help you reach the next grade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: UPCOMING EVENTS -->
+    <section class="section-alt">
+        <div class="container">
+            <div class="section-title"><span>🎉</span><h2>Upcoming Events</h2><p>Don't miss out on the action</p></div>
+            <div class="grid-3">
+                <div class="event-card">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop" alt="Competition">
+                    <div class="event-card-content">
+                        <div class="event-date">📍 Dec 15, 2026</div>
+                        <h3>Winter Bouldering Classic</h3>
+                        <p style="color:var(--gray-muted);">Our biggest comp of the season — open to all levels. Prizes, food trucks, and live DJ.</p>
+                        <a href="event.html" style="color:var(--accent); font-weight:600; text-decoration:none; display:inline-block; margin-top:8px;">Register →</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop" alt="Clinic">
+                    <div class="event-card-content">
+                        <div class="event-date">📍 Jan 5, 2027</div>
+                        <h3>Technique Clinic: Footwork</h3>
+                        <p style="color:var(--gray-muted);">Learn precision foot placement and body positioning from Head Coach Alex Rivera.</p>
+                        <a href="training.html" style="color:var(--accent); font-weight:600; text-decoration:none; display:inline-block; margin-top:8px;">Sign Up →</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f6d6?w=600&h=400&fit=crop" alt="Community">
+                    <div class="event-card-content">
+                        <div class="event-date">📍 Every Wednesday</div>
+                        <h3>Community Climb Night</h3>
+                        <p style="color:var(--gray-muted);">Free for members, $10 for guests. Meet new climbing partners and enjoy some friendly competition.</p>
+                        <a href="event.html" style="color:var(--accent); font-weight:600; text-decoration:none; display:inline-block; margin-top:8px;">Join Us →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: MEMBERSHIP PLANS -->
+    <section class="section-gradient">
+        <div class="container">
+            <div class="section-title"><span>💳</span><h2>Membership Plans</h2><p>Find the perfect fit for your climbing lifestyle</p></div>
+            <div class="grid-3">
+                <div class="membership-card">
+                    <h3>Day Pass</h3>
+                    <div class="price">$25 <span>/day</span></div>
+                    <ul>
+                        <li>Full gym access</li>
+                        <li>Gear rental available</li>
+                        <li>No commitment</li>
+                    </ul>
+                    <a href="register.html" class="btn-primary" style="width:100%; justify-content:center;">Get Pass</a>
+                </div>
+                <div class="membership-card popular">
+                    <div class="popular-badge">🔥 Most Popular</div>
+                    <h3>Monthly</h3>
+                    <div class="price">$85 <span>/mo</span></div>
+                    <ul>
+                        <li>24/7 access</li>
+                        <li>Unlimited guest passes (2/mo)</li>
+                        <li>10% off gear shop</li>
+                        <li>Free clinics</li>
+                    </ul>
+                    <a href="register.html" class="btn-primary" style="width:100%; justify-content:center;">Join Now</a>
+                </div>
+                <div class="membership-card">
+                    <h3>Annual</h3>
+                    <div class="price">$900 <span>/yr</span></div>
+                    <ul>
+                        <li>Everything in Monthly</li>
+                        <li>Save $120/year</li>
+                        <li>Free gear rental (5/mo)</li>
+                        <li>Priority event registration</li>
+                    </ul>
+                    <a href="register.html" class="btn-primary" style="width:100%; justify-content:center;">Save Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: GYM TOUR GALLERY -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-title"><span>📸</span><h2>Gym Tour</h2><p>Explore our world-class facility</p></div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1546483875-ad9014c88eba?w=800&h=500&fit=crop" alt="Main climbing area">
+                    <div class="gallery-overlay"><span>🧗 Main Climbing Area</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f6d6?w=500&h=400&fit=crop" alt="Bouldering cave">
+                    <div class="gallery-overlay"><span>🪨 Bouldering Cave</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=400&fit=crop" alt="Training area">
+                    <div class="gallery-overlay"><span>💪 Training Lab</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=800&h=400&fit=crop" alt="Community space">
+                    <div class="gallery-overlay"><span>🤝 Community Lounge</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: STATS + CTA -->
+    <section class="section-alt">
+        <div class="container">
+            <div class="section-title"><span>📊</span><h2>SummitGrip By The Numbers</h2><p>Built by climbers, for climbers</p></div>
+            <div class="grid-4" style="margin-bottom: 60px;">
+                <div class="stat-box"><div class="stat-number">150+</div><div class="stat-label">Routes & Problems</div></div>
+                <div class="stat-box"><div class="stat-number">24/7</div><div class="stat-label">Member Access</div></div>
+                <div class="stat-box"><div class="stat-number">3,500+</div><div class="stat-label">Active Community</div></div>
+                <div class="stat-box"><div class="stat-number">12</div><div class="stat-label">Years of Excellence</div></div>
+            </div>
+
+            <div class="cta-box">
+                <h2>Ready to Start Your Climbing Journey?</h2>
+                <p>Join the SummitGrip community today. First visit? Get a free day pass when you sign up for a membership.</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="register.html" class="btn-primary">🚀 Join Now</a>
+                    <a href="contact.html" class="btn-outline">📬 Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><a href="#" class="logo-brand" style="margin-bottom:16px; display:inline-flex;"><svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span class="logo-text"><span>Summit</span>Grip</span></a><p style="color:#9CA3AF; font-size:0.85rem; margin-top:12px;">The ultimate indoor climbing & bouldering destination. Send it with us.</p></div>
+                <div class="footer-col"><h4>EXPLORE</h4><ul><li><a href="#">Climbing Routes</a></li><li><a href="#">Bouldering</a></li><li><a href="#">Memberships</a></li><li><a href="#">Gift Cards</a></li></ul></div>
+                <div class="footer-col"><h4>SUPPORT</h4><ul><li><a href="faq.html">FAQs</a></li><li><a href="#">Safety Rules</a></li><li><a href="#">Employment</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+                <div class="footer-col"><h4>VISIT US</h4><ul><li>📍 123 Gravity Way, Denver, CO</li><li>🕒 Open 24/7 • 365 days</li><li>📞 +1 (303) 555-CLIMB</li></ul></div>
+            </div>
+            <div class="footer-bottom"><span>© 2026 SummitGrip — Elevate Your Climb. All Rights Reserved.</span><div><a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Accessibility</a></div></div>
+        </div>
+    </footer>
+
+    <script>
+        // ----- DROPDOWN -----
+        function toggleDropdown(menuId, e) {
+            if(e) e.stopPropagation();
+            document.querySelectorAll('.dropdown-content').forEach(d => {
+                if(d.id !== menuId) d.classList.remove('show');
+            });
+            const menu = document.getElementById(menuId);
+            if(menu) menu.classList.toggle('show');
+        }
+
+        // ----- MOBILE MENU -----
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.getElementById('mobileMenuOverlay').classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+        function toggleMobileSubmenu(id) {
+            const sub = document.getElementById(id);
+            if(sub) sub.classList.toggle('open');
+        }
+
+        // ----- DIRECTION -----
+        function toggleDirection() {
+            const html = document.documentElement;
+            const newDir = html.dir === 'rtl' ? 'ltr' : 'rtl';
+            html.dir = newDir;
+            const dirTextDesktop = document.getElementById('dirTextDesktop');
+            const mobileDirText = document.getElementById('mobileDirText');
+            if(dirTextDesktop) dirTextDesktop.innerText = newDir.toUpperCase();
+            if(mobileDirText) mobileDirText.innerText = newDir.toUpperCase();
+        }
+        function toggleDirectionMobile() { toggleDirection(); }
+
+        // ----- THEME -----
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+            const isLight = body.classList.contains('light-mode');
+            const themeTextDesktop = document.getElementById('themeTextDesktop');
+            if(themeTextDesktop) {
+                themeTextDesktop.innerText = isLight ? 'Light' : 'Dark';
+            }
+            localStorage.setItem('summitTheme', isLight ? 'light' : 'dark');
+        }
+        function toggleThemeMobile() { toggleTheme(); }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('summitTheme');
+        if(savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            const themeTextDesktop = document.getElementById('themeTextDesktop');
+            if(themeTextDesktop) themeTextDesktop.innerText = 'Light';
+        }
+
+        // ----- HERO SLIDER -----
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function goToSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % slides.length;
+            goToSlide(next);
+        }
+
+        // Auto-slide every 5 seconds
+        let sliderInterval = setInterval(nextSlide, 5000);
+
+        // Pause on hover
+        const hero = document.querySelector('.home-hero');
+        hero.addEventListener('mouseenter', () => clearInterval(sliderInterval));
+        hero.addEventListener('mouseleave', () => {
+            sliderInterval = setInterval(nextSlide, 5000);
+        });
+
+        // Make dots clickable
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(sliderInterval);
+                goToSlide(index);
+                sliderInterval = setInterval(nextSlide, 5000);
+            });
+        });
+
+        // ----- Close dropdowns on outside click -----
+        window.addEventListener('click', () => {
+            document.querySelectorAll('.dropdown-content').forEach(d => d.classList.remove('show'));
+        });
+    </script>
+
+</body>
+</html>

@@ -703,7 +703,10 @@
 
         /* ===== FOOTER ===== */
         footer { background: #0A0A0A; border-top: 1px solid #2A2A2A; padding: 64px 0 32px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 48px; margin-bottom: 48px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; margin-bottom: 48px; }
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        }
         .footer-col h4 { color: var(--accent); font-size: 1rem; margin-bottom: 20px; letter-spacing: 0.05em; }
         .footer-col ul { list-style: none; }
         .footer-col li { margin-bottom: 12px; }
@@ -725,7 +728,7 @@
             .section-title h2 { font-size: 1.8rem; }
             .cta-box { padding: 32px 24px; }
             .stat-number { font-size: 2.2rem; }
-            .footer-grid { gap: 32px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .membership-card { padding: 24px 20px; }
             .slider-controls { bottom: 20px; }
@@ -856,7 +859,20 @@
         </div>
     </div>
 
-    <!-- SECTION 2: FEATURED ROUTES / WHY US -->
+    <!-- SECTION 2: STATS -->
+    <section class="section-alt" style="padding-bottom: 20px;">
+        <div class="container">
+            <div class="section-title"><span>📊</span><h2>SummitGrip By The Numbers</h2><p>Built by climbers, for climbers</p></div>
+            <div class="grid-4">
+                <div class="stat-box"><div class="stat-number">150+</div><div class="stat-label">Routes & Problems</div></div>
+                <div class="stat-box"><div class="stat-number">24/7</div><div class="stat-label">Member Access</div></div>
+                <div class="stat-box"><div class="stat-number">3,500+</div><div class="stat-label">Active Community</div></div>
+                <div class="stat-box"><div class="stat-number">12</div><div class="stat-label">Years of Excellence</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: FEATURED ROUTES / WHY US -->
     <section class="section-dark">
         <div class="container">
             <div class="section-title"><span>🧗</span><h2>Why Climb With Us?</h2><p>Built by climbers, for climbers</p></div>
@@ -929,7 +945,7 @@
                         <li>Gear rental available</li>
                         <li>No commitment</li>
                     </ul>
-                    <a href="register.html" class="btn-primary" style="width:100%; justify-content:center;">Get Pass</a>
+                    <a href="register.html" class="btn-outline" style="width:100%; justify-content:center;">Get Pass</a>
                 </div>
                 <div class="membership-card popular">
                     <div class="popular-badge">🔥 Most Popular</div>
@@ -952,7 +968,7 @@
                         <li>Free gear rental (5/mo)</li>
                         <li>Priority event registration</li>
                     </ul>
-                    <a href="register.html" class="btn-primary" style="width:100%; justify-content:center;">Save Now</a>
+                    <a href="register.html" class="btn-outline" style="width:100%; justify-content:center;">Save Now</a>
                 </div>
             </div>
         </div>
@@ -968,11 +984,11 @@
                     <div class="gallery-overlay"><span>🧗 Main Climbing Area</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/c3.avif" alt="Bouldering cave">
+                    <img src="images/e2.webp" alt="Bouldering cave">
                     <div class="gallery-overlay"><span>🪨 Bouldering Cave</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/t1.avif" alt="Training area">
+                    <img src="images/ab3.webp" alt="Training area">
                     <div class="gallery-overlay"><span>💪 Training Lab</span></div>
                 </div>
                 <div class="gallery-item">
@@ -983,18 +999,9 @@
         </div>
     </section>
 
-    <!-- SECTION 6: STATS + CTA -->
+    <!-- SECTION 7: CTA -->
     <section class="section-alt">
-        <div class="container">
-            <div class="section-title"><span>📊</span><h2>SummitGrip By The Numbers</h2><p>Built by climbers, for climbers</p></div>
-            <div class="grid-4" style="margin-bottom: 60px;">
-                <div class="stat-box"><div class="stat-number">150+</div><div class="stat-label">Routes & Problems</div></div>
-                <div class="stat-box"><div class="stat-number">24/7</div><div class="stat-label">Member Access</div></div>
-                <div class="stat-box"><div class="stat-number">3,500+</div><div class="stat-label">Active Community</div></div>
-                <div class="stat-box"><div class="stat-number">12</div><div class="stat-label">Years of Excellence</div></div>
-            </div>
-
-            <div class="cta-box">
+        <div class="container">            <div class="cta-box">
                 <h2>Ready to Start Your Climbing Journey?</h2>
                 <p>Join the SummitGrip community today. First visit? Get a free day pass when you sign up for a membership.</p>
                 <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">

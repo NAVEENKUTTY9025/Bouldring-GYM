@@ -650,7 +650,10 @@
 
         /* ===== FOOTER ===== */
         footer { background: #0A0A0A; border-top: 1px solid #2A2A2A; padding: 64px 0 32px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 48px; margin-bottom: 48px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; margin-bottom: 48px; }
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        }
         .footer-col h4 { color: var(--accent); font-size: 1rem; margin-bottom: 20px; letter-spacing: 0.05em; }
         .footer-col ul { list-style: none; }
         .footer-col li { margin-bottom: 12px; }
@@ -672,7 +675,7 @@
             .section-title h2 { font-size: 1.8rem; }
             .cta-box { padding: 32px 24px; }
             .stat-number { font-size: 2.2rem; }
-            .footer-grid { gap: 32px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .discipline-card img { height: 180px; }
             .zone-card img { height: 200px; }

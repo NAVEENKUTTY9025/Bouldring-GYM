@@ -73,7 +73,8 @@
         body.light-mode .register-container .login-link a {
             color: #F97316;
         }
-        body.light-mode .top-bar .logo-text {
+        body.light-mode .top-bar .logo-text,
+        body.light-mode .register-container .logo-text {
             color: #111111;
         }
         body.light-mode .top-bar .control-btn {
@@ -572,12 +573,7 @@
 
     <!-- TOP BAR - Logo left, controls right -->
     <div class="top-bar">
-        <a href="index.html" class="logo-brand">
-            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m8 3 4 8 5-5 5 15H2L8 3z"/>
-            </svg>
-            <span class="logo-text"><span>Summit</span>Grip</span>
-        </a>
+
 
         <div class="top-controls">
             <button onclick="toggleDirection()" class="control-btn" title="Toggle Direction">
@@ -594,7 +590,12 @@
     <!-- REGISTER CONTAINER - Fixed, minimal scroll -->
     <div class="register-wrapper">
         <div class="register-container">
-            <span class="register-icon">🧗</span>
+            <a href="index.html" class="logo-brand" style="justify-content: center; margin-bottom: 16px;">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--accent);">
+                    <path d="m8 3 4 8 5-5 5 15H2L8 3z"/>
+                </svg>
+                <span class="logo-text" style="font-size: 1.5rem;"><span>Summit</span>Grip</span>
+            </a>
             <h2>Create Account</h2>
             <p>Start your climbing journey today</p>
 

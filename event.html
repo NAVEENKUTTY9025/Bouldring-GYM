@@ -495,6 +495,76 @@
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         }
 
+        /* ===== NEW LAYOUT: EVENT LIST ===== */
+        .event-list-container {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        body.light-mode .event-list-container {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        .event-list-item {
+            display: grid;
+            grid-template-columns: 150px 200px 1fr;
+            gap: 32px;
+            padding: 32px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        body.light-mode .event-list-item {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .event-list-item:hover {
+            background: rgba(249, 115, 22, 0.05);
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+        .event-list-date {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            text-align: center;
+        }
+        .event-list-date span {
+            display: block;
+            font-size: 1rem;
+            color: var(--gray-muted);
+            font-weight: 500;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .event-list-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .event-list-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+        .event-list-content p {
+            color: var(--gray-muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        @media (max-width: 900px) {
+            .event-list-item {
+                grid-template-columns: 100px 1fr;
+            }
+            .event-list-img { display: none; }
+        }
+        @media (max-width: 600px) {
+            .event-list-item { grid-template-columns: 1fr; text-align: center; }
+            .event-list-date { margin-bottom: 16px; }
+        }
+
         /* ===== EVENT CARDS ===== */
         .event-card {
             background: #1A1A1A;
@@ -896,32 +966,32 @@
                 <h2>Upcoming Events</h2>
                 <p>Don't miss out — mark your calendar!</p>
             </div>
-            <div class="grid-3" id="eventGrid">
-                <div class="event-card" onclick="openDetail('event1')">
-                    <img src="images/e3.webp" alt="Winter Bouldering Classic">
-                    <div class="event-card-content">
-                        <div class="event-date">📍 Dec 15, 2026 • 10:00 AM</div>
+            <div class="event-list-container" id="eventGrid">
+                <div class="event-list-item" onclick="openDetail('event1')">
+                    <div class="event-list-date">15<span>Dec</span></div>
+                    <img src="images/e3.webp" alt="Winter Bouldering Classic" class="event-list-img">
+                    <div class="event-list-content">
                         <h3>Winter Bouldering Classic</h3>
                         <p>Our biggest competition of the season. Open to all levels with prizes, food trucks, and a live DJ.</p>
-                        <span class="event-tag">🏆 Competition</span>
+                        <span class="event-tag" style="background: rgba(249,115,22,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.9rem;">10:00 AM • Competition</span>
                     </div>
                 </div>
-                <div class="event-card" onclick="openDetail('event2')">
-                    <img src="images/e2.webp" alt="Technique Clinic">
-                    <div class="event-card-content">
-                        <div class="event-date">📍 Jan 5, 2027 • 6:00 PM</div>
+                <div class="event-list-item" onclick="openDetail('event2')">
+                    <div class="event-list-date">05<span>Jan</span></div>
+                    <img src="images/e2.webp" alt="Technique Clinic" class="event-list-img">
+                    <div class="event-list-content">
                         <h3>Footwork Technique Clinic</h3>
                         <p>Learn precision foot placement and body positioning from Head Coach Alex Rivera.</p>
-                        <span class="event-tag">🧗 Clinic</span>
+                        <span class="event-tag" style="background: rgba(249,115,22,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.9rem;">6:00 PM • Clinic</span>
                     </div>
                 </div>
-                <div class="event-card" onclick="openDetail('event3')">
-                    <img src="images/e1.avif" alt="Community Climb Night">
-                    <div class="event-card-content">
-                        <div class="event-date">📍 Every Wednesday • 7:00 PM</div>
+                <div class="event-list-item" onclick="openDetail('event3')">
+                    <div class="event-list-date">12<span>Jan</span></div>
+                    <img src="images/e1.avif" alt="Community Climb Night" class="event-list-img">
+                    <div class="event-list-content">
                         <h3>Community Climb Night</h3>
                         <p>Free for members, $10 for guests. Meet new climbing partners and enjoy friendly competition.</p>
-                        <span class="event-tag">🤝 Social</span>
+                        <span class="event-tag" style="background: rgba(249,115,22,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.9rem;">7:00 PM • Social</span>
                     </div>
                 </div>
             </div>

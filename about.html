@@ -139,6 +139,97 @@
         }
         .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
 
+        /* ===== NEW LAYOUT: NARRATIVE & TIMELINE ===== */
+        .split-story {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .split-story-img {
+            position: relative;
+        }
+        .split-story-img img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 20px 20px 0px rgba(249, 115, 22, 0.1);
+        }
+        
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding: 40px 0;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(249, 115, 22, 0.3);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .timeline-content {
+            width: 45%;
+            background: #111111;
+            padding: 32px;
+            border-radius: 4px;
+            border-left: 4px solid var(--accent);
+        }
+        body.light-mode .timeline-content {
+            background: #FFFFFF;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border: 4px solid #0A0A0A;
+            border-radius: 50%;
+        }
+        body.light-mode .timeline-dot {
+            border-color: #F5F5F5;
+        }
+        
+        @media (max-width: 768px) {
+            .split-story {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .timeline-container::before {
+                left: 20px;
+            }
+            .timeline-item, .timeline-item:nth-child(even) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 60px;
+            }
+            .timeline-content {
+                width: 100%;
+            }
+            .timeline-dot {
+                left: 20px;
+                top: 32px;
+            }
+        }
+
         /* ========== NAVIGATION ========== */
         nav {
             position: fixed;
@@ -678,15 +769,14 @@
     <!-- SECTION 2: OUR STORY & MISSION -->
     <section class="section-dark">
         <div class="container">
-            <div class="grid-2">
+            <div class="split-story">
                 <div class="about-story-text">
-                    <span style="font-size: 48px;">📖</span>
-                    <h2 style="margin-top: 16px;">Our Story</h2>
-                    <p>What started as a dream between two climbing guides in Boulder has grown into the region's premier indoor climbing destination. SummitGrip opened its doors in 2012 with just 20 routes and a handful of passionate climbers.</p>
-                    <p>Today, we boast over 150 routes, a world-class bouldering cave, and a thriving community of thousands. From hosting youth climbing teams to sending our first 5.15a project, we believe climbing transforms lives.</p>
-                    <p><strong>Our mission:</strong> make climbing accessible, inspiring, and endlessly fun for everyone who walks through our doors.</p>
+                    <h2 style="margin-bottom: 24px; font-size: 2.5rem; line-height: 1.2;">Our Story</h2>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 16px;">What started as a dream between two climbing guides in Boulder has grown into the region's premier indoor climbing destination. SummitGrip opened its doors in 2012 with just 20 routes and a handful of passionate climbers.</p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 16px;">Today, we boast over 150 routes, a world-class bouldering cave, and a thriving community of thousands. From hosting youth climbing teams to sending our first 5.15a project, we believe climbing transforms lives.</p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; font-weight: 600; color: var(--accent);">Our mission: make climbing accessible, inspiring, and endlessly fun for everyone who walks through our doors.</p>
                 </div>
-                <div>
+                <div class="split-story-img">
                     <img src="images/a1.webp" style="width:100%; border-radius: 28px; object-fit: cover; height: 350px; border: 2px solid var(--accent);" alt="Gym interior">
                 </div>
             </div>
@@ -708,12 +798,40 @@
     <!-- SECTION 4: MILESTONE TIMELINE -->
     <section class="section-gradient">
         <div class="container">
-            <div class="section-title"><span>🏆</span><h2>Our Journey</h2><p>Milestones that shaped SummitGrip</p></div>
-            <div class="grid-4">
-                <div class="milestone-card"><div class="milestone-year">2012</div><h3>First Wall</h3><p>Opened with 20 routes and 50 founding members.</p></div>
-                <div class="milestone-card"><div class="milestone-year">2015</div><h3>Bouldering Cave</h3><p>Added 5,000 sq ft bouldering zone with competition wall.</p></div>
-                <div class="milestone-card"><div class="milestone-year">2019</div><h3>Training Lab</h3><p>Unveiled state-of-the-art fitness & campus board area.</p></div>
-                <div class="milestone-card"><div class="milestone-year">2024</div><h3>Youth Team Wins</h3><p>National champions in speed & lead categories.</p></div>
+            <div class="section-title"><h2>Our Journey</h2><p>Milestones that shaped SummitGrip</p></div>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="milestone-year" style="color: var(--accent); font-weight: bold; font-size: 1.2rem; margin-bottom: 8px;">2012</div>
+                        <h3 style="margin-bottom: 12px;">First Wall</h3>
+                        <p style="color: var(--gray-muted);">Opened with 20 routes and 50 founding members.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="milestone-year" style="color: var(--accent); font-weight: bold; font-size: 1.2rem; margin-bottom: 8px;">2015</div>
+                        <h3 style="margin-bottom: 12px;">Bouldering Cave</h3>
+                        <p style="color: var(--gray-muted);">Added 5,000 sq ft bouldering zone with competition wall.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="milestone-year" style="color: var(--accent); font-weight: bold; font-size: 1.2rem; margin-bottom: 8px;">2019</div>
+                        <h3 style="margin-bottom: 12px;">Training Lab</h3>
+                        <p style="color: var(--gray-muted);">Unveiled state-of-the-art fitness & campus board area.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="milestone-year" style="color: var(--accent); font-weight: bold; font-size: 1.2rem; margin-bottom: 8px;">2024</div>
+                        <h3 style="margin-bottom: 12px;">Youth Team Wins</h3>
+                        <p style="color: var(--gray-muted);">National champions in speed & lead categories.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

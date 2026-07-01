@@ -395,6 +395,55 @@
         }
         body.light-mode .control-btn-mobile { color: #111111; }
 
+        /* ===== NEW LAYOUT: BENTO BOX & FULL WIDTH ===== */
+        .bento-box {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 24px;
+        }
+        .bento-card-main {
+            grid-row: span 2;
+        }
+        @media (max-width: 900px) {
+            .bento-box { grid-template-columns: 1fr; }
+        }
+        
+        .full-width-boulder {
+            position: relative;
+            background-image: url('images/c3.avif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 100px 0;
+            border-radius: 24px;
+            overflow: hidden;
+            margin: 40px 0;
+        }
+        .full-width-boulder::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+        }
+        .boulder-card-floating {
+            position: relative;
+            z-index: 2;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            max-width: 500px;
+            color: #fff;
+        }
+        body.light-mode .boulder-card-floating {
+            background: rgba(255, 255, 255, 0.9);
+            color: #111;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
         /* ===== CLIMB HERO ===== */
         .climb-hero {
             position: relative;
@@ -749,21 +798,27 @@
     <section class="section-dark" id="disciplines">
         <div class="container">
             <div class="section-title"><span>🏔️</span><h2>Climbing Disciplines</h2><p>Find your style</p></div>
-            <div class="grid-3">
-                <div class="discipline-card">
-                    <img src="images/c4.avif" alt="Bouldering">
-                    <h3>🪨 Bouldering</h3>
-                    <p>Short, powerful problems up to 15ft. No ropes needed — just you, the wall, and crash pads. Perfect for strength and technique.</p>
+            <div class="bento-box">
+                <div class="discipline-card bento-card-main" style="height: 100%;">
+                    <img src="images/c4.avif" alt="Bouldering" style="height: 350px;">
+                    <div style="padding: 32px;">
+                        <h3 style="font-size: 2rem; margin-bottom: 16px;">🪨 Bouldering</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.8;">Short, powerful problems up to 15ft. No ropes needed — just you, the wall, and crash pads. Perfect for strength, technique, and building community on the mats.</p>
+                    </div>
                 </div>
                 <div class="discipline-card">
-                    <img src="images/c5.avif" alt="Top Rope">
-                    <h3>🧗 Top Rope</h3>
-                    <p>Climb with a rope anchored at the top. Perfect for beginners and endurance training. Our auto-belays make solo climbing easy.</p>
+                    <img src="images/c5.avif" alt="Top Rope" style="height: 150px;">
+                    <div style="padding: 24px;">
+                        <h3>🧗 Top Rope</h3>
+                        <p>Climb with a rope anchored at the top. Perfect for endurance.</p>
+                    </div>
                 </div>
                 <div class="discipline-card">
-                    <img src="images/c6.avif" alt="Lead Climbing">
-                    <h3>⚡ Lead Climbing</h3>
-                    <p>Clip your rope into quickdraws as you climb. Our lead cave features steep overhangs and powerful routes for advanced climbers.</p>
+                    <img src="images/c6.avif" alt="Lead Climbing" style="height: 150px;">
+                    <div style="padding: 24px;">
+                        <h3>⚡ Lead Climbing</h3>
+                        <p>Clip your rope into quickdraws as you climb steep overhangs.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -802,21 +857,20 @@
     <section class="section-dark">
         <div class="container">
             <div class="section-title"><span>🪨</span><h2>Bouldering Zone</h2><p>Power, technique, and community</p></div>
-            <div class="grid-2">
-                <div>
-                    <img src="images/c3.avif" alt="Bouldering zone" style="width:100%; border-radius:24px; object-fit:cover; height:400px; border:2px solid rgba(249,115,22,0.3);">
-                </div>
-                <div>
-                    <h3 style="font-size:1.8rem; margin-bottom:16px;">The Best Bouldering in Denver</h3>
-                    <p style="color:var(--gray-muted); margin-bottom:16px;">Our 5,000 sq ft bouldering zone features:</p>
-                    <ul style="list-style:none; color:var(--gray-muted);">
-                        <li style="padding:10px 0; border-bottom:1px solid rgba(249,115,22,0.1);">✅ 40+ problems from V0 to V13</li>
-                        <li style="padding:10px 0; border-bottom:1px solid rgba(249,115,22,0.1);">✅ 45° moonboard with adjustable holds</li>
-                        <li style="padding:10px 0; border-bottom:1px solid rgba(249,115,22,0.1);">✅ Competition-style overhang cave</li>
-                        <li style="padding:10px 0; border-bottom:1px solid rgba(249,115,22,0.1);">✅ Premium crash pads and training tools</li>
-                        <li style="padding:10px 0;">✅ Weekly reset — always something new</li>
-                    </ul>
-                    <a href="training.html" class="btn-primary" style="margin-top:20px;">Train Here →</a>
+            <div class="full-width-boulder">
+                <div class="container">
+                    <div class="boulder-card-floating">
+                        <h3 style="font-size:1.8rem; margin-bottom:16px;">The Best Bouldering in Denver</h3>
+                        <p style="opacity: 0.8; margin-bottom:24px;">Our 5,000 sq ft bouldering zone features:</p>
+                        <ul style="list-style:none; opacity: 0.9;">
+                            <li style="padding:10px 0; border-bottom:1px solid rgba(249,115,22,0.2);">✅ 40+ problems from V0 to V13</li>
+                            <li style="padding:10px 0; border-bottom:1px solid rgba(249,115,22,0.2);">✅ 45° moonboard with adjustable holds</li>
+                            <li style="padding:10px 0; border-bottom:1px solid rgba(249,115,22,0.2);">✅ Competition-style overhang cave</li>
+                            <li style="padding:10px 0; border-bottom:1px solid rgba(249,115,22,0.2);">✅ Premium crash pads and training tools</li>
+                            <li style="padding:10px 0;">✅ Weekly reset — always something new</li>
+                        </ul>
+                        <a href="training.html" class="btn-primary" style="margin-top:24px; display: inline-block;">Train Here →</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -284,12 +284,12 @@
             font-size: 20px;
         }
 
-        @media (min-width: 1024px) {
+        @media (min-width: 1150px) {
             .desktop-nav-links { display: flex !important; }
             .desktop-controls-wrapper { display: flex !important; }
             .mobile-menu-btn { display: none !important; }
         }
-        @media (max-width: 1023px) {
+        @media (max-width: 1149px) {
             .desktop-nav-links { display: none !important; }
             .desktop-controls-wrapper { display: none !important; }
             .mobile-menu-btn { display: flex !important; }
@@ -572,6 +572,9 @@
             transition: all 0.4s ease;
             border: 1px solid rgba(249,115,22,0.15);
             color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         body.light-mode .membership-card { background: #FFFFFF; color: #111111; }
         .membership-card:hover { transform: translateY(-6px); border-color: var(--accent); }
@@ -582,7 +585,7 @@
             margin: 16px 0;
         }
         .membership-card .price span { font-size: 1.2rem; font-weight: 400; color: var(--gray-muted); }
-        .membership-card ul { list-style: none; margin: 20px 0; }
+        .membership-card ul { list-style: none; margin: 20px 0; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
         .membership-card ul li {
             padding: 8px 0;
             border-bottom: 1px solid rgba(249,115,22,0.1);
@@ -838,9 +841,9 @@
     <!-- SECTION 1: HERO CAROUSEL -->
     <div class="home-hero">
         <div class="hero-slider">
-            <img src="file:///C:/Users/navee/.gemini/antigravity/brain/baf3262b-ce75-43c8-ad94-7f0053c564a5/hero_index_1782901066088.png" class="hero-slide active" alt="Climbing gym interior">
-            <img src="file:///C:/Users/navee/.gemini/antigravity/brain/baf3262b-ce75-43c8-ad94-7f0053c564a5/hero_slide_2_1782903258770.png" class="hero-slide" alt="Bouldering wall">
-            <img src="file:///C:/Users/navee/.gemini/antigravity/brain/baf3262b-ce75-43c8-ad94-7f0053c564a5/hero_about_1782901091309.png" class="hero-slide" alt="Climbing community">
+            <img src="images/c1.jpg" class="hero-slide active" alt="Climbing gym interior">
+            <img src="images/c2.avif" class="hero-slide" alt="Bouldering wall">
+            <img src="images/c3.avif" class="hero-slide" alt="Climbing community">
         </div>
         <div class="hero-overlay"></div>
         <div class="container home-hero-content">
